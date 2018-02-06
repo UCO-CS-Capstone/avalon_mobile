@@ -1,10 +1,10 @@
 package edu.uco.avalon;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,20 +12,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
-
-import java.util.ArrayList;
+import android.view.View;
 
 public class ProjectSelection extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-    //For project overview
-    ArrayList<Project> projectModels;
-    ListView lvProjectOverview;
-    private static ProjectOverviewAdapter projectOverviewAdapterdapter;
-    ///////////////////////////
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,38 +23,6 @@ public class ProjectSelection extends AppCompatActivity
         setContentView(R.layout.activity_project_selection);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        //For project overview
-        lvProjectOverview= findViewById(R.id.projectOverviewList);
-
-        projectModels = new ArrayList<>();
-        projectModels.add(new Project("Oklahoma City South","02/27/2018",
-                "07/03/2018", "On Schedule"));
-        projectModels.add(new Project("Oakland","05/27/2018",
-                "12/17/2019", "Equipment conflict"));
-        projectModels.add(new Project("Dallas, TX","01/15/2018",
-                "06/14/2018", "Behind Schedule"));
-        projectModels.add(new Project("New York","02/12/2018",
-                "01/23/2019", "On Schedule"));
-
-        projectOverviewAdapterdapter= new ProjectOverviewAdapter(
-                projectModels,getApplicationContext());
-
-        lvProjectOverview.setAdapter(projectOverviewAdapterdapter);
-
-        //When a project overview item is selected
-        lvProjectOverview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Project projectModel = projectModels.get(position);
-
-                Snackbar.make(view, projectModel.getName()+"\n"+"Start Date: " +
-                        projectModel.getStartDate() + "\n" + "End Date: " +
-                        projectModel.getEstEndDate(), Snackbar.LENGTH_LONG)
-                        .setAction("No action", null).show();
-            }
-        });
-        /////////////////////////
 
         //TODO - Make a new project with this button?
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -143,5 +101,10 @@ public class ProjectSelection extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void gotoProjectSelection(View view) {
+        Intent intent = new Intent(this, ProjectOverviewActivity.class);
+        startActivity(intent);
     }
 }

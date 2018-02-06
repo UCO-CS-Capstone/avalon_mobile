@@ -27,7 +27,7 @@ public class ProjectOverviewAdapter extends ArrayAdapter<Project> {
     }
 
     public ProjectOverviewAdapter(ArrayList<Project> data, Context context) {
-        super(context, R.layout.project_overview_view, data);
+        super(context, R.layout.project_overview_list_item_view, data);
         this.dataSet = data;
         this.mContext=context;
 
@@ -43,7 +43,7 @@ public class ProjectOverviewAdapter extends ArrayAdapter<Project> {
         if (convertView == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.project_overview_view, parent, false);
+            convertView = inflater.inflate(R.layout.project_overview_list_item_view, parent, false);
             viewHolder.textProjectName = (TextView) convertView.findViewById(R.id.textProjectName);
             viewHolder.textStartDate = (TextView) convertView.findViewById(R.id.textStartDate);
             viewHolder.textEstEndDate = (TextView) convertView.findViewById(R.id.textEndDate);

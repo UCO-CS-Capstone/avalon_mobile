@@ -85,10 +85,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="81dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="On Schedule"
         android:textAppearance="@android:style/TextAppearance.Material.Small"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.411"
         app:layout_constraintStart_toEndOf="@+id/textEndDate"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
