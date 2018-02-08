@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="edu.uco.avalon.CreateEquipmentActivity">
-
-    <!--<Button
-        android:id="@+id/buttonContacts"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Create Equipment" />
-     -->
-
+    android:layout_height="match_parent">
 
     <FrameLayout
         android:id="@+id/fragment_container"
@@ -32,4 +24,5 @@
         app:layout_constraintTop_creator="1">
 
     </FrameLayout>
+
 </android.support.constraint.ConstraintLayout>

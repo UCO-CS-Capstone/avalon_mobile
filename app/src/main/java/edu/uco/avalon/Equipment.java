@@ -1,28 +1,36 @@
 package edu.uco.avalon;
 
+import java.util.ArrayList;
+
 /**
  * Created by cdcal on 2/4/2018.
  */
 
 public class Equipment {
 
-    private EquipmentState equipmentState;
+    public static ArrayList<String> typeList = new ArrayList<>(); //should be accessed from db
+    public static ArrayList<Equipment> equipmentList = new ArrayList<>(); //should be accessed from db
+    public static Equipment editOption;
+    public static int id;
 
-    /*
-    @Override
-    public void render(Graphics2D g) {
-        laserState.render(g);
+    private String name;
+    private String type;
+    private boolean activeProject;
+
+    Equipment(String name, String type, boolean activeProject){
+        this.name = name;
+        this.type = type;
+        this.activeProject = activeProject;
     }
 
-    @Override
-    public void update() {
-        laserState.update(this, super.bounce);
-
+    public String getName(){
+        return name;
     }
-     */
 
-
-    public void setState(EquipmentState state) {
-        this.equipmentState = state;
+    public String getType(){
+        return type;
     }
+
+    public boolean getActiveProject(){ return activeProject; }
+
 }

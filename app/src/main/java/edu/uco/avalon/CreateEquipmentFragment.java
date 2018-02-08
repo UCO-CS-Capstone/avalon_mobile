@@ -1,50 +1,47 @@
 package edu.uco.avalon;
 
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.util.Calendar;
-
-public class CreateEquipmentFragment extends Fragment implements
-        DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+public class CreateEquipmentFragment extends Fragment {
 
     EditText nameEdit;
     Spinner typeSpinner;
-    EditText maintDateEdit, maintTimeEdit, maintTimerEdit, tempTimeEdit;
-    EditText priceDollarEdit, priceCentsEdit;
+
     Button saveButton;
-    TextView dollarText;
 
     String name;
     String type;
-    String maintDate, maintTime, maintTimer;
-    String price, priceDollars, priceCents;
 
-    int day, month, year, hour, minute;
     //Dummy values to be replaced by accessing the Database
-    String typeList[] = {"Type 1", "Type 2", "Type 3", "Type 4"}; //should be accessed from db
+    //String typeList[] = {"Type 1", "Type 2", "Type 3", "Type 4"}; //should be accessed from db
+    //static boolean created = false;
 
 
     public CreateEquipmentFragment() {
         // Required empty public constructor
 
+
         //if creating new equipment, just get the types and nothing else.
+        name = "";
+        type = "";
+//        if(created == false) {
+//            Equipment.typeList.add("Type 1");
+//            Equipment.typeList.add("Type 2");
+//            Equipment.typeList.add("Type 3");
+//            Equipment.typeList.add("Type 4");
+//            created = true;
+//        }
 
         //if editing equipment, get that data and store into all the edit texts and such
     }
@@ -58,14 +55,18 @@ public class CreateEquipmentFragment extends Fragment implements
 
         //Start of Project Name EditText ***********************************************************
         nameEdit = view.findViewById(R.id.equipmentNameEdit);
+        nameEdit.setText(name);
         //End of Project Name EditText *************************************************************
 
         //Start of Type Spinner ********************************************************************
         typeSpinner =  view.findViewById(R.id.typeSpinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this.getActivity(),
-                R.layout.spinner_equipment_type, typeList);
+                R.layout.spinner_equipment_type, Equipment.typeList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(adapter);
+        if(!type.equals("")) {
+            typeSpinner.setSelection(adapter.getPosition(type)); //for editing
+        }
         typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
@@ -75,108 +76,11 @@ public class CreateEquipmentFragment extends Fragment implements
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                type = typeList[0];
+                type = Equipment.typeList.get(0);
             }
         });
         //End of Type Spinner **********************************************************************
 
-        //Start of Maintenance Date/Time/Timer EditTexts *******************************************
-        maintDateEdit = view.findViewById(R.id.equipmentMaintDateEdit);
-        maintDateEdit.setKeyListener(null);
-        maintDateEdit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus){
-                    Calendar c = Calendar.getInstance();
-                    year = c.get(Calendar.YEAR);
-                    month = c.get(Calendar.MONTH);
-                    day = c.get(Calendar.DAY_OF_MONTH);
-
-                    new DatePickerDialog(getContext(),CreateEquipmentFragment.this,
-                            year, month, day).show();
-                }
-            }
-        });
-        maintDateEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    Calendar c = Calendar.getInstance();
-                    year = c.get(Calendar.YEAR);
-                    month = c.get(Calendar.MONTH);
-                    day = c.get(Calendar.DAY_OF_MONTH);
-
-                    new DatePickerDialog(getContext(),CreateEquipmentFragment.this,
-                            year, month, day).show();
-            }
-        });
-
-        maintTimeEdit = view.findViewById(R.id.equipmentMaintTimeEdit);
-        maintTimeEdit.setKeyListener(null);
-        maintTimeEdit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus){
-                    Calendar c = Calendar.getInstance();
-                    hour = c.get(Calendar.HOUR_OF_DAY);
-                    minute = c.get(Calendar.MINUTE);
-
-                    tempTimeEdit = maintTimeEdit;
-
-                    new TimePickerDialog(getContext(),CreateEquipmentFragment.this,
-                            hour, minute, DateFormat.is24HourFormat(getContext())).show();
-                }
-            }
-        });
-        maintTimeEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar c = Calendar.getInstance();
-                hour = c.get(Calendar.HOUR_OF_DAY);
-                minute = c.get(Calendar.MINUTE);
-
-                tempTimeEdit = maintTimeEdit;
-
-                new TimePickerDialog(getContext(),CreateEquipmentFragment.this,
-                        hour, minute, DateFormat.is24HourFormat(getContext())).show();
-            }
-        });
-
-        maintTimerEdit = view.findViewById(R.id.equipmentMaintTimerEdit);
-        maintTimerEdit.setKeyListener(null);
-        maintTimerEdit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus){
-                    Calendar c = Calendar.getInstance();
-                    hour = c.get(Calendar.HOUR_OF_DAY);
-                    minute = c.get(Calendar.MINUTE);
-
-                    tempTimeEdit = maintTimerEdit;
-
-                    new TimePickerDialog(getContext(),CreateEquipmentFragment.this,
-                            hour, minute, DateFormat.is24HourFormat(getContext())).show();
-                }
-            }
-        });
-        maintTimerEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar c = Calendar.getInstance();
-                hour = c.get(Calendar.HOUR_OF_DAY);
-                minute = c.get(Calendar.MINUTE);
-
-                tempTimeEdit = maintTimerEdit;
-
-                new TimePickerDialog(getContext(),CreateEquipmentFragment.this,
-                        hour, minute, DateFormat.is24HourFormat(getContext())).show();
-            }
-        });
-        //End of Maintenance Date/Time/Timer EditTexts *********************************************
-
-        //Start of Price EditTexts *****************************************************************
-        priceDollarEdit = view.findViewById(R.id.equipmentPriceDollarEdit);
-        priceCentsEdit = view.findViewById(R.id.equipmentPriceCentsEdit);
-        //End of Price EditTexts *******************************************************************
 
         //Start of Save Button *********************************************************************
         saveButton = view.findViewById(R.id.saveEquipmentButton);
@@ -184,21 +88,14 @@ public class CreateEquipmentFragment extends Fragment implements
             @Override
             public void onClick(View v) {
                 name = nameEdit.getText().toString().trim();
-                type = typeSpinner.getSelectedItem().toString().trim();
-                maintDate = maintDateEdit.getText().toString().trim();
-                maintTime = maintTimeEdit.getText().toString().trim();
-                maintTimer = maintTimerEdit.getText().toString().trim();
-                priceDollars = priceDollarEdit.getText().toString().trim();
-                priceCents = priceCentsEdit.getText().toString().trim();
+                if(!name.equals("")) {
+                    type = typeSpinner.getSelectedItem().toString();
 
-                //  if(price)
-
-
-                //if saving was successful
-                Toast.makeText(getContext(), "Saved Successfully.", Toast.LENGTH_SHORT);
-
-                //if saving was unsuccessful, don't go back to previous screen.
-                //Toast.makeText(getContext(), "Saved Successfully.", Toast.LENGTH_SHORT);
+                    updateData(); //update to db
+                }
+                else{
+                    Toast.makeText(getContext(), "Please name the equipment!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         //End of Save Button ***********************************************************************
@@ -208,31 +105,19 @@ public class CreateEquipmentFragment extends Fragment implements
         return view;
     }
 
-    @Override
-    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-        year = i;
-        month = i1;
-        day = i2;
+    protected void updateData(){
 
-        String text = month + "\\" + day + "\\" + year;
-        maintDateEdit.setText(text);
+        Equipment.equipmentList.add(new Equipment(name, type, false)); //db
+
+        //if saving was successful
+        Toast.makeText(getContext(), "Saved Successfully.", Toast.LENGTH_SHORT).show();
+
+        //if saving was unsuccessful, don't go back to previous screen.
+        //Toast.makeText(getContext(), "Saved Unsuccessfully....", Toast.LENGTH_SHORT);
+
+        //go back to previous screen
+        getFragmentManager().popBackStack();
+
     }
 
-    @Override
-    public void onTimeSet(TimePicker timePicker, int i, int i1) {
-        hour = i;
-        minute = i1;
-        String text = "";
-
-
-
-        if(minute < 10){
-            text = hour + ":0" + minute;
-        }
-        else {
-            text = hour + ":" + minute;
-        }
-
-        tempTimeEdit.setText(text);
-    }
 }
