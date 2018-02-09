@@ -5,6 +5,10 @@
     <string name="Contact"><u>Contact Us</u></string>
     <string-array name="contactList">
         <item>Locked Account</item>
+        <item>New User</item>
+        <item>Expired Password</item>
+        <item>Reset Password</item>
+        <item>Others</item>
     </string-array>
 
 
