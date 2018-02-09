@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">Avalon</string>
     <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="Help"><u>click here if you Having trouble with the app? </u></string>
+    <string name="Contact"><u>Contact Us</u></string>
+    <string-array name="contactList">
+        <item>Locked Account</item>
+        <item>New User</item>
+        <item>Expired Password</item>
+        <item>Reset Password</item>
+        <item>Others</item>
+    </string-array>
+
+
 </resources>
