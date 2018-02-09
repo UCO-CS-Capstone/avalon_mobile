@@ -1,5 +1,9 @@
 package edu.uco.avalon;
 
+import edu.uco.avalon.Users.Administrator;
+import edu.uco.avalon.Users.EquipmentManager;
+import edu.uco.avalon.Users.ProjectOwner;
+import edu.uco.avalon.Users.UserDirectory;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -17,11 +21,15 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-
 public class ActivityMain extends AppCompatActivity {
     int trys =0;
     Spinner spinner;
     ArrayAdapter<CharSequence> adp;
+
+    EditText editUser;
+    EditText editPass;
+    Button btnLogin;
+    TextView forgotPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,4 +128,5 @@ public class ActivityMain extends AppCompatActivity {
         Intent intent = new Intent(this, ProjectSelection.class);
         startActivity(intent);
     }
+
 }
