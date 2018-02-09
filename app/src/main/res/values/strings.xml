@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Avalon</string>
     <string name="forgot_password"><u>Forgot Password?</u></string>
+    <array name="project_sites">
+        <item>Project 1</item>
+        <item>Project 2</item>
+        <item>Project 3</item>
+        <item>Project 4</item>
+        <item>Project 5</item>
+        <item>Project 6</item>
+        <item>Project 7</item>
+    </array>
 </resources>
