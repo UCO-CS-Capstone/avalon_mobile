@@ -2,6 +2,7 @@
     <string name="app_name">Avalon</string>
     <string name="forgot_password"><u>Forgot Password?</u></string>
 
+
     <string name="title_activity_project_selection">Project Selection</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -21,5 +22,4 @@
         <item>Reset Password</item>
         <item>Others</item>
     </string-array>
-
 </resources>
