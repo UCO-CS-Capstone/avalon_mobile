@@ -9,12 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivityMain">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+
+        <activity android:name=".EquipmentOptionsActivity"></activity>
+
+        <activity
+            android:name=".ProjectSelection"
+            android:label="@string/title_activity_project_selection"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ProjectOverviewActivity"></activity>
+        <activity android:name=".ActivityHome" />
+        <activity android:name=".ActivityResetPassword" />
+
     </application>
 
 </manifest>

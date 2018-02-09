@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="edu.uco.avalon.ProjectSelection"
+    tools:showIn="@layout/app_bar_project_selection"
+    android:id="@+id/test"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnProjectOverview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="gotoProjectSelection"
+        android:text="Project Overview" />
+
+</android.support.v7.widget.LinearLayoutCompat>

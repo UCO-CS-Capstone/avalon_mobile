@@ -1,19 +1,30 @@
 package edu.uco.avalon;
 
-import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-
 import edu.uco.avalon.Users.Administrator;
 import edu.uco.avalon.Users.EquipmentManager;
 import edu.uco.avalon.Users.ProjectOwner;
 import edu.uco.avalon.Users.UserDirectory;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 public class ActivityMain extends AppCompatActivity {
+    int trys =0;
+    Spinner spinner;
+    ArrayAdapter<CharSequence> adp;
 
     EditText editUser;
     EditText editPass;
@@ -25,43 +36,97 @@ public class ActivityMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        editUser = (EditText)findViewById(R.id.edit_username);
-        editPass = (EditText)findViewById(R.id.edit_password);
-        forgotPass = (TextView)findViewById(R.id.text_forgot_password);
+        Login();
+        ForgetPassword();
+        contactUs();
+    }
 
-        Administrator administrator = new Administrator("aaa@boom.net", "123");
-        ProjectOwner projectOwner = new ProjectOwner("bbb@boom.net", "456");
-        EquipmentManager equipmentManager = new EquipmentManager("ccc@boom.net", "789");
-        final UserDirectory userDirectory = new UserDirectory();
+    private void contactUs() {
+        TextView contact = (TextView) findViewById(R.id.help);
 
-        userDirectory.addUser(administrator);
-        userDirectory.addUser(projectOwner);
-        userDirectory.addUser(equipmentManager);
-
-        btnLogin = (Button)findViewById(R.id.btn_login);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setContentView(R.layout.user_layout);
-                FragmentManager fm = getSupportFragmentManager();
-                if(userDirectory.getUserCredentials(editUser.getText().toString(), editPass.getText().toString())==1) {
-                    AdminFragment admin = new AdminFragment();
-                    setTitle("Admin");
-                    fm.beginTransaction().replace(R.id.user_container, admin).commit();
-                }
-                if(userDirectory.getUserCredentials(editUser.getText().toString(), editPass.getText().toString())==2) {
-                    ProjOwnFrag projOwn = new ProjOwnFrag();
-                    setTitle("PO");
-                    fm.beginTransaction().replace(R.id.user_container, projOwn).commit();
-                }
-                if(userDirectory.getUserCredentials(editUser.getText().toString(), editPass.getText().toString())==3) {
-                    EquipMngrFrag equipMngr = new EquipMngrFrag();
-                    setTitle("EQM");
-                    fm.beginTransaction().replace(R.id.user_container, equipMngr).commit();
-                }
+                startActivity(new Intent(ActivityMain.this, ActivityContactUs.class));
             }
         });
+    }
 
+    private void ForgetPassword() {
+
+        TextView forget = (TextView) findViewById(R.id.txtForget);
+
+        forget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ActivityMain.this, ActivityResetPassword.class));
+            }
+        });
+    }
+
+    private void Login() {
+        Button login = (Button) findViewById(R.id.btnlogin);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String user = "dkashosi", password = "Avalon11";
+                String inUser = ((TextView) findViewById(R.id.edit_username)).getText().toString().toLowerCase();
+                String inPassword = ((TextView) findViewById(R.id.edit_password)).getText().toString();
+                if(trys > 2){
+                    new AlertDialog.Builder(ActivityMain.this)
+                            .setTitle("Account Lock")
+                            .setMessage("Your Account has been lock due to many tries please contact the admin to unlock if for you")
+                            .setPositiveButton("Cantact Admin", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    startActivity(new Intent(ActivityMain.this, ActivityContactUs.class));
+
+                                }
+                            })
+                            .setNegativeButton("cancel", null).create().show();
+                }
+                else if (user.equals(inUser))
+                    if(password.equals(inPassword)) {
+
+                    startActivity(new Intent(ActivityMain.this, ActivityHome.class));
+                    }
+                    else{
+                    trys++;
+                    new AlertDialog.Builder(ActivityMain.this)
+                            .setTitle("wrong Password")
+                            .setMessage("You entered an invalid passowrd")
+                            .setPositiveButton("Reset Password", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    startActivity(new Intent(ActivityMain.this, ActivityResetPassword.class));
+
+                                }
+                            })
+                            .setNegativeButton("Try Again", null).create().show();
+                    }
+                else{
+                    new AlertDialog.Builder(ActivityMain.this)
+                            .setTitle("wrong User name")
+                            .setMessage("You entered an invalid userName")
+                            .setPositiveButton("Cantact Admin", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    startActivity(new Intent(ActivityMain.this, ActivityContactUs.class));
+
+                                }
+                            })
+                            .setNegativeButton("Try Again", null).create().show();
+                }
+
+            }
+        });
+    }
+
+    //TODO - Just to bypass the login screen for now
+    public void gotoProjectSelection(View view){
+        Intent intent = new Intent(this, ProjectSelection.class);
+        startActivity(intent);
     }
 
 }
