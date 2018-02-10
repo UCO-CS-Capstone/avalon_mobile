@@ -21,4 +21,10 @@
         <item>Reset Password</item>
         <item>Others</item>
     </string-array>
+    <array name="project_list">
+        <item>Project Name Norman</item>
+        <item>Project Name: Yukon</item>
+        <item>Project Name: Ardmore</item>
+        <item>Project Name: Tulsa</item>
+    </array>
 </resources>

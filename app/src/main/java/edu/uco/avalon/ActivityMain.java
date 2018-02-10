@@ -1,40 +1,39 @@
 package edu.uco.avalon;
 
-import edu.uco.avalon.Users.Administrator;
-import edu.uco.avalon.Users.EquipmentManager;
-import edu.uco.avalon.Users.ProjectOwner;
-import edu.uco.avalon.Users.UserDirectory;
-import android.app.Activity;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import edu.uco.avalon.Users.Administrator;
+import edu.uco.avalon.Users.EquipmentManager;
+import edu.uco.avalon.Users.ProjectOwner;
+import edu.uco.avalon.Users.UserDirectory;
+
 public class ActivityMain extends AppCompatActivity {
     int trys =0;
     Spinner spinner;
     ArrayAdapter<CharSequence> adp;
-
-    EditText editUser;
-    EditText editPass;
-    Button btnLogin;
-    TextView forgotPass;
+    UserDirectory userDirectory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Administrator admin = new Administrator("a", "a");
+        ProjectOwner po = new ProjectOwner("b","b");
+        EquipmentManager eqm = new EquipmentManager("c","c");
+        userDirectory = new UserDirectory();
+        userDirectory.addUser(admin);
+        userDirectory.addUser(po);
+        userDirectory.addUser(eqm);
 
         Login();
         ForgetPassword();
@@ -70,7 +69,6 @@ public class ActivityMain extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String user = "dkashosi", password = "Avalon11";
                 String inUser = ((TextView) findViewById(R.id.edit_username)).getText().toString().toLowerCase();
                 String inPassword = ((TextView) findViewById(R.id.edit_password)).getText().toString();
                 if(trys > 2){
@@ -86,10 +84,15 @@ public class ActivityMain extends AppCompatActivity {
                             })
                             .setNegativeButton("cancel", null).create().show();
                 }
-                else if (user.equals(inUser))
-                    if(password.equals(inPassword)) {
-
-                    startActivity(new Intent(ActivityMain.this, ActivityHome.class));
+                else if (userDirectory.getUserCredentials(inUser, inPassword) != 0)
+                    if(userDirectory.getUserCredentials(inUser, inPassword) == 1) {
+                        startActivity(new Intent(ActivityMain.this, AdminListActivity.class));
+                    }
+                    else if(userDirectory.getUserCredentials(inUser, inPassword) == 2) {
+                        startActivity(new Intent(ActivityMain.this, ProjectSelection.class));
+                    }
+                    else if(userDirectory.getUserCredentials(inUser, inPassword) == 3) {
+                        startActivity(new Intent(ActivityMain.this, EquipmentOptionsActivity.class));
                     }
                     else{
                     trys++;
