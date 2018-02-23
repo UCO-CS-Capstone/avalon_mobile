@@ -19,6 +19,7 @@ public class CreateEquipmentFragment extends Fragment {
     Spinner typeSpinner;
 
     Button saveButton;
+    Button deleteButton; //for child EditEquipmentFragment
 
     String name;
     String type;
@@ -64,8 +65,15 @@ public class CreateEquipmentFragment extends Fragment {
                 R.layout.spinner_equipment_type, Equipment.typeList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(adapter);
-        if(!type.equals("")) {
-            typeSpinner.setSelection(adapter.getPosition(type)); //for editing
+        if(!type.equals("")) { //for editing
+            int pos = adapter.getPosition(type);
+            if(pos != -1){
+                typeSpinner.setSelection(pos);
+            }
+            else{
+                typeSpinner.setSelection(0);
+                Toast.makeText(getContext(), "Type could not be found. It may have been removed.", Toast.LENGTH_SHORT).show();
+            }
         }
         typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -101,6 +109,18 @@ public class CreateEquipmentFragment extends Fragment {
         //End of Save Button ***********************************************************************
 
 
+        //Start of Delete Button *******************************************************************
+        if(this instanceof EditEquipmentFragment){ //if in edit-mode, add the delete button stuff.
+            deleteButton = view.findViewById(R.id.deleteEquipmentButton);
+            deleteButton.setVisibility(View.VISIBLE);
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    deleteData(); //update to db
+                }
+            });
+        }
+        //End of Delete Button *********************************************************************
 
         return view;
     }
@@ -112,11 +132,16 @@ public class CreateEquipmentFragment extends Fragment {
         //if saving was successful
         Toast.makeText(getContext(), "Saved Successfully.", Toast.LENGTH_SHORT).show();
 
+
         //if saving was unsuccessful, don't go back to previous screen.
         //Toast.makeText(getContext(), "Saved Unsuccessfully....", Toast.LENGTH_SHORT);
 
         //go back to previous screen
         getFragmentManager().popBackStack();
+
+    }
+
+    protected void deleteData(){
 
     }
 

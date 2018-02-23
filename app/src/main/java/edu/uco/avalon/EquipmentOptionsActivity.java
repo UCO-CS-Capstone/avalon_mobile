@@ -21,8 +21,8 @@ public class EquipmentOptionsActivity extends Activity {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
         transaction.replace(R.id.fragment_container, addedFragment);
-        transaction.addToBackStack(null);
-
+        //transaction.addToBackStack(null); //don't add first fragment to backstack, or you will get
+                                            //a blank activity when backbutton is pressed.
         transaction.commit();
 
     }

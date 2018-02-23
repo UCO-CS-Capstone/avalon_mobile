@@ -28,4 +28,20 @@ public class EditEquipmentFragment extends CreateEquipmentFragment {
         //go back to previous screen
         getFragmentManager().popBackStack();
     }
+
+    @Override
+    protected void deleteData(){
+
+        Equipment.equipmentList.remove(Equipment.id);
+
+        //if deletion was successful
+        Toast.makeText(getContext(), "Equipment Deleted Successfully.", Toast.LENGTH_SHORT).show();
+
+
+        //if deletion was unsuccessful
+        //Toast.makeText(getContext(), "Equipment could not be deleted....", Toast.LENGTH_SHORT);
+
+        //go back to previous screen
+        getFragmentManager().popBackStack();
+    }
 }

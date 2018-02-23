@@ -51,13 +51,13 @@ public class EquipmentOptionsFragment extends Fragment {
         editTypesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Fragment addedFragment = new CreateEquipmentFragment();
-//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//
-//                transaction.replace(R.id.fragment_container, addedFragment);
-//                transaction.addToBackStack(null);
-//
-//                transaction.commit();
+                Fragment addedFragment = new ManageTypesFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                transaction.replace(R.id.fragment_container, addedFragment);
+                transaction.addToBackStack(null);
+
+                transaction.commit();
             }
         });
 
