@@ -2,11 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.uco.avalon.CreateEquipmentFragment">
+    tools:context="edu.uco.avalon.ManageTypesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <EditText
-        android:id="@+id/equipmentNameEdit"
+        android:id="@+id/typeNameEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -14,39 +13,34 @@
         android:gravity="center"
         android:selectAllOnFocus="true"
         android:inputType="textPersonName"
-        android:hint="Name of equipment" />
+        android:hint="Name of Equipment Type" />
+
+    <Button
+        android:id="@+id/addTypeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/typeNameEdit"
+        android:layout_marginTop="25dp"
+        android:ems="7"
+        android:text="Add Type" />
 
     <Spinner
         android:id="@+id/typeSpinner"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/equipmentNameEdit"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="50dp" />
+        android:layout_centerVertical="true"
+        android:layout_centerInParent="true" />
 
     <Button
-        android:id="@+id/saveEquipmentButton"
+        android:id="@+id/deleteTypeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="120dp"
-        android:ems="10"
-        android:text="Save Item" />
-
-    <Button
-        android:id="@+id/deleteEquipmentButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
-        android:visibility="invisible"
+        android:layout_below="@id/typeSpinner"
+        android:layout_marginTop="50dp"
         android:background="#EE0000"
         android:ems="7"
-        android:text="Delete Item" />
-
+        android:text="Delete Type" />
 
 </RelativeLayout>
-
-
