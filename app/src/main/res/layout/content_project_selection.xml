@@ -17,4 +17,11 @@
         android:onClick="gotoProjectSelection"
         android:text="Project Overview" />
 
+    <Button
+        android:id="@+id/btnCostAnalysis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="startCostAnalysis"
+        android:text="Cost Analysis"/>
+
 </android.support.v7.widget.LinearLayoutCompat>

@@ -53,10 +53,10 @@ public class CreateEquipmentFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_create_equipment, container, false);
 
-        //Start of Project Name EditText ***********************************************************
+        //Start of Projects Name EditText ***********************************************************
         nameEdit = view.findViewById(R.id.equipmentNameEdit);
         nameEdit.setText(name);
-        //End of Project Name EditText *************************************************************
+        //End of Projects Name EditText *************************************************************
 
         //Start of Type Spinner ********************************************************************
         typeSpinner =  view.findViewById(R.id.typeSpinner);

@@ -107,4 +107,9 @@ public class ProjectSelection extends AppCompatActivity
         Intent intent = new Intent(this, ProjectOverviewActivity.class);
         startActivity(intent);
     }
+
+    public void startCostAnalysis(View view) {
+        Intent intent = new Intent(this, ActivityCost.class);
+        startActivity(intent);
+    }
 }
