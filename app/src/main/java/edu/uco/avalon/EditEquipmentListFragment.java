@@ -62,6 +62,7 @@ public class EditEquipmentListFragment extends Fragment {
                 //pass the id to the api and send the equipment info it gives.
                 Equipment.editOption = Equipment.equipmentList.get(i); //should get from DB
                 Equipment.id = i;
+                Maintenance.selected = i;
 
                 Fragment addedFragment = new EditEquipmentFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();

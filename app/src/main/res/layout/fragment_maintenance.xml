@@ -1,0 +1,78 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.uco.avalon.MaintenanceFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <EditText
+        android:id="@+id/maintenanceDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:selectAllOnFocus="true"
+        android:inputType="textPersonName"
+        android:layout_below="@id/TimeMaintenance"
+        android:hint="Detail/Comment on maintenance" />
+
+    <Button
+        android:id="@+id/saveMaintenanceButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="120dp"
+        android:ems="10"
+        android:text="Save Item" />
+
+
+    <EditText
+        android:id="@+id/DateMaintenance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editText2"
+        android:layout_alignBottom="@+id/editText2"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/TimeMaintenance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/DateMaintenance"
+        android:layout_below="@id/DateMaintenance"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:inputType="time" />
+
+    <TextView
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="13dp"
+        android:layout_marginTop="29dp"
+        android:layout_toStartOf="@+id/DateMaintenance"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:singleLine="false"
+        android:text="Date" />
+
+    <TextView
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/maintenanceDetail"
+        android:layout_alignEnd="@+id/editText2"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Time" />
+
+
+</RelativeLayout>
+
+

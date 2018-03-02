@@ -1,5 +1,7 @@
 package edu.uco.avalon;
 
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.widget.Toast;
 
 /**
@@ -43,5 +45,17 @@ public class EditEquipmentFragment extends CreateEquipmentFragment {
 
         //go back to previous screen
         getFragmentManager().popBackStack();
+    }
+
+    protected  void maintenance(){
+
+        Fragment addedFragment = new MaintenancetListFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.fragment_container, addedFragment);
+        transaction.addToBackStack(null);
+
+        transaction.commit();
+
     }
 }
