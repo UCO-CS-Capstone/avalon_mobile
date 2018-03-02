@@ -20,6 +20,7 @@ public class CreateEquipmentFragment extends Fragment {
 
     Button saveButton;
     Button deleteButton; //for child EditEquipmentFragment
+    Button maintenance ;// for child EditEquipmentFragment
 
     String name;
     String type;
@@ -119,6 +120,14 @@ public class CreateEquipmentFragment extends Fragment {
                     deleteData(); //update to db
                 }
             });
+            maintenance = view.findViewById(R.id.btnmaintenance);
+            maintenance.setVisibility(View.VISIBLE);
+            maintenance.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    maintenance(); //update to db
+                }
+            });
         }
         //End of Delete Button *********************************************************************
 
@@ -142,6 +151,9 @@ public class CreateEquipmentFragment extends Fragment {
     }
 
     protected void deleteData(){
+
+    }
+    protected void maintenance(){
 
     }
 

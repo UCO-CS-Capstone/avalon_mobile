@@ -46,6 +46,16 @@
         android:ems="7"
         android:text="Delete Item" />
 
+    <Button
+        android:id="@+id/btnmaintenance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/saveEquipmentButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="49dp"
+        android:visibility="invisible"
+        android:text="Check Maintenance" />
+
 
 </RelativeLayout>
 
