@@ -1,5 +1,6 @@
 package edu.uco.avalon;
 
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -52,11 +53,18 @@ public class ProjectOverviewActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Project projectModel = projectModels.get(position);
 
+                gotoProjectDetails(projectModel);
+
                 Snackbar.make(view, projectModel.getName() + "\n" + "Start Date: " +
                         projectModel.getStartDate() + "\n" + "End Date: " +
                         projectModel.getEstEndDate(), Snackbar.LENGTH_LONG)
                         .setAction("No action", null).show();
             }
         });
+    }
+
+    public void gotoProjectDetails(Project projectModel) {
+        Intent intent = new Intent(this, ProjectDetails.class);
+        startActivity(intent);
     }
 }

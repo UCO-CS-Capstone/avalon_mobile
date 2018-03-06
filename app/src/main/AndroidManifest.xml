@@ -25,7 +25,8 @@
         <activity android:name=".ActivityHome" />
         <activity android:name=".ActivityResetPassword" />
         <activity android:name=".AdminListActivity" />
-        <activity android:name=".ActivityCost"></activity>
+        <activity android:name=".ActivityCost" />
+        <activity android:name=".ProjectDetails"></activity>
     </application>
 
 </manifest>
