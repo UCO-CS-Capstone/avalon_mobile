@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.uco.avalon.CreateProjectActivity">
+
+
+    <EditText
+        android:id="@+id/projectNameEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:selectAllOnFocus="true"
+        android:inputType="textPersonName"
+        android:hint="Project Name" />
+
+    <EditText
+        android:id="@+id/projectStartDateEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_below="@id/projectNameEdit"
+        android:cursorVisible="false"
+        android:hint="Start Date"
+        android:inputType="date"
+        android:selectAllOnFocus="true"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/projectEstEndDateEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_below="@id/projectStartDateEdit"
+        android:cursorVisible="false"
+        android:inputType="date"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:hint="Estimated End Date" />
+
+    <EditText
+        android:id="@+id/projectActualEndDateEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_below="@id/projectEstEndDateEdit"
+        android:cursorVisible="false"
+        android:hint="Actual End Date"
+        android:inputType="date"
+        android:selectAllOnFocus="true"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/projectEstCostText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/projectActualEndDateEdit"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:text="Estimated Overall Cost"/>
+
+    <edu.uco.avalon.Widgets.CurrencyEditText
+        android:id="@+id/projectEstCostEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/projectEstCostText"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:inputType="number"
+        android:selectAllOnFocus="true"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/projectCurrentCostText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/projectEstCostEdit"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:text="Current Cost" />
+
+    <edu.uco.avalon.Widgets.CurrencyEditText
+        android:id="@+id/projectCurrentCostEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/projectCurrentCostText"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:inputType="number"
+        android:selectAllOnFocus="true"
+        android:singleLine="true" />
+
+    <Button
+        android:id="@+id/saveProjectButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp"
+        android:ems="7"
+        android:text="Create Project" />
+
+</RelativeLayout>

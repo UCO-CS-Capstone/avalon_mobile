@@ -6,12 +6,49 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class ProjectOverviewActivity extends AppCompatActivity {
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.project_overview);
+
+        final ArrayList<Project> projectModels = Project.projectList;
+        ListView lvProjectOverview;
+        ProjectOverviewAdapter projectOverviewAdapter;
+        ArrayList<Project> projectList = Project.projectList;
+
+        //For project overview
+        lvProjectOverview = findViewById(R.id.projectOverviewList);
+
+        projectOverviewAdapter = new ProjectOverviewAdapter(
+                projectList, getApplicationContext());
+
+        lvProjectOverview.setAdapter(projectOverviewAdapter);
+
+        //When a project overview item is selected
+        lvProjectOverview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Project projectModel = projectModels.get(position);
+
+                Snackbar.make(view, projectModel.getName() + "\n" + "Start Date: " +
+                        projectModel.getStartDate() + "\n" + "Estimated End Date: " +
+                        projectModel.getEstEndDate() + "\n" + "Actual End Date: " +
+                        projectModel.getActualEndDate() + "\n" + "Estimated Overall Cost: " +
+                        projectModel.getEstCost() + "\n" + "Current Cost: " +
+                        projectModel.getCurrentCost(), Snackbar.LENGTH_LONG)
+                        .setAction("No action", null).show();
+            }
+        });
+    }
+
+    //Michael's version before project changes
+/*    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.project_overview);
@@ -42,7 +79,7 @@ public class ProjectOverviewActivity extends AppCompatActivity {
                 "10/07/2019", "Frozen Over"));
 
         projectOverviewAdapterdapter = new ProjectOverviewAdapter(
-                projectModels, getApplicationContext());
+                Project.projectList, getApplicationContext());
 
         lvProjectOverview.setAdapter(projectOverviewAdapterdapter);
 
@@ -58,5 +95,5 @@ public class ProjectOverviewActivity extends AppCompatActivity {
                         .setAction("No action", null).show();
             }
         });
-    }
+    }*/
 }
