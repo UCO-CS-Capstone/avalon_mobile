@@ -1,11 +1,13 @@
 package edu.uco.avalon;
 
+import java.io.Serializable;
+
 /**
  * Created by Michael Keller on 2/3/18.
  * Store the basic info needed for a project overview
  */
 
-public class Project {
+public class Project implements Serializable {
     private String name;
     private String startDate;
     private String estEndDate;
