@@ -13,8 +13,6 @@ import java.util.ArrayList;
 
 
 public class Project implements Serializable {
-public class Project {
-
     public static ArrayList<Project> projectList = new ArrayList<>();
     private String name;
     private String startDate;
@@ -115,9 +113,4 @@ public class Project {
     public void setStatus(String status) {
         this.status = status;
     }
-
-
-
-
-
 }
