@@ -78,6 +78,8 @@ public class ProjectSelection extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == R.id.action_logout)
+            actionLogout();
 
         return super.onOptionsItemSelected(item);
     }
@@ -116,5 +118,11 @@ public class ProjectSelection extends AppCompatActivity
         Intent intent = new Intent(this, ActivityCost.class);
         startActivity(intent);
 
+    }
+
+    public void actionLogout() {
+        Intent intent = new Intent(this, ActivityMain.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }

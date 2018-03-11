@@ -1,13 +1,14 @@
 package edu.uco.avalon;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,11 +30,12 @@ public class ActivityCost extends AppCompatActivity {
     Equipments equip5;
     SimpleDateFormat format;
     Button analysis;
-    CheckBox chk1;
-    CheckBox chk2;
-    CheckBox chk3;
-    CheckBox chk4;
-    CheckBox chk5;
+    Button visualize;
+    Switch swtch1;
+    Switch swtch2;
+    Switch swtch3;
+    Switch swtch4;
+    Switch swtch5;
     TextView totalCost;
     TextView equipCost;
     TextView maintCost;
@@ -46,6 +48,7 @@ public class ActivityCost extends AppCompatActivity {
         setContentView(R.layout.activity_cost);
         format = new SimpleDateFormat("MM/dd/yyyy");
         analysis = (Button)findViewById(R.id.btn_analyze);
+        visualize = (Button)findViewById(R.id.btn_vis);
         projectSpinner = (Spinner)findViewById(R.id.project_spinner);
         String[] s = {"Project 1", "Project 2", "Project 3"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -54,11 +57,11 @@ public class ActivityCost extends AppCompatActivity {
         projectSpinner.setAdapter(adapter);
 
 
-        chk1 = (CheckBox)findViewById(R.id.checkBox1);
-        chk2 = (CheckBox)findViewById(R.id.checkBox2);
-        chk3 = (CheckBox)findViewById(R.id.checkBox3);
-        chk4 = (CheckBox)findViewById(R.id.checkBox4);
-        chk5 = (CheckBox)findViewById(R.id.checkBox5);
+        swtch1 = (Switch) findViewById(R.id.switch1);
+        swtch2 = (Switch) findViewById(R.id.switch2);
+        swtch3 = (Switch) findViewById(R.id.switch3);
+        swtch4 = (Switch) findViewById(R.id.switch4);
+        swtch5 = (Switch) findViewById(R.id.switch5);
 
         totalCost = (TextView)findViewById(R.id.txt_total_cost);
         equipCost = (TextView)findViewById(R.id.txt_equip_cost);
@@ -93,23 +96,23 @@ public class ActivityCost extends AppCompatActivity {
         } else {
             int costOfMaint = Integer.parseInt(mainCostEnter.getText().toString());
             int equipmentTally = 0;
-            if(chk1.isChecked()) {
+            if(swtch1.isChecked()) {
                 equipmentTally++;
                 costAnalysisE += equip1.getCost();
             }
-            if(chk2.isChecked()) {
+            if(swtch2.isChecked()) {
                 equipmentTally++;
                 costAnalysisE += equip2.getCost();
             }
-            if(chk3.isChecked()) {
+            if(swtch3.isChecked()) {
                 equipmentTally++;
                 costAnalysisE += equip3.getCost();
             }
-            if(chk4.isChecked()) {
+            if(swtch4.isChecked()) {
                 equipmentTally++;
                 costAnalysisE += equip4.getCost();
             }
-            if(chk5.isChecked()) {
+            if(swtch5.isChecked()) {
                 equipmentTally++;
                 costAnalysisE += equip5.getCost();
             }
@@ -209,5 +212,15 @@ public class ActivityCost extends AppCompatActivity {
         String[] tokens = s.split("/");
         int i = Integer.parseInt(tokens[1]);
         return i;
+    }
+
+    public void startGraphView(View view) {
+        if(!this.totalCost.getText().toString().equals("")) {
+            Intent intent = new Intent(this, GraphViewActivity.class);
+            intent.putExtra("EQUIP", equipCost.getText().toString());
+            intent.putExtra("MAINT", maintCost.getText().toString());
+            intent.putExtra("TOTAL", totalCost.getText().toString());
+            startActivity(intent);
+        }
     }
 }

@@ -26,6 +26,7 @@ public class EquipmentOptionsActivity extends Activity {
         transaction.commit();
 
     }
+    
 }
 
 
