@@ -56,7 +56,7 @@ public class CreateEquipmentFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_create_equipment, container, false);
 
         //Start of Projects Name EditText ***********************************************************
-        nameEdit = view.findViewById(R.id.equipmentNameEdit);
+        nameEdit = view.findViewById(R.id.projectNameEdit);
         nameEdit.setText(name);
         //End of Projects Name EditText *************************************************************
 
@@ -92,7 +92,7 @@ public class CreateEquipmentFragment extends Fragment {
 
 
         //Start of Save Button *********************************************************************
-        saveButton = view.findViewById(R.id.saveEquipmentButton);
+        saveButton = view.findViewById(R.id.saveProjectButton);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
