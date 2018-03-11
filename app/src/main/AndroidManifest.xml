@@ -27,6 +27,7 @@
         <activity android:name=".AdminListActivity" />
         <activity android:name=".ActivityCost" />
         <activity android:name=".ProjectDetails"></activity>
+        <activity android:name=".CreateProjectActivity"></activity>
     </application>
 
 </manifest>
