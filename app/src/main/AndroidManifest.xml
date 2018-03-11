@@ -25,7 +25,12 @@
         <activity android:name=".ActivityHome" />
         <activity android:name=".ActivityResetPassword" />
         <activity android:name=".AdminListActivity" />
-        <activity android:name=".ActivityCost"></activity>
+        <activity android:name=".ActivityCost"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".GraphViewActivity"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

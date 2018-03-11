@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -21,11 +22,16 @@ public class ActivityMain extends AppCompatActivity {
     Spinner spinner;
     ArrayAdapter<CharSequence> adp;
     UserDirectory userDirectory;
+    EditText user;
+    EditText pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        user = (EditText)findViewById(R.id.edit_username);
+        pass = (EditText)findViewById(R.id.edit_password);
 
         Administrator admin = new Administrator("a", "a");
         ProjectOwner po = new ProjectOwner("b","b");
@@ -65,12 +71,11 @@ public class ActivityMain extends AppCompatActivity {
 
     private void Login() {
         Button login = (Button) findViewById(R.id.btnlogin);
-
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String inUser = ((TextView) findViewById(R.id.edit_username)).getText().toString().toLowerCase();
-                String inPassword = ((TextView) findViewById(R.id.edit_password)).getText().toString();
+                String inUser = user.getText().toString().toLowerCase();
+                String inPassword = pass.getText().toString();
                 if(trys > 2){
                     new AlertDialog.Builder(ActivityMain.this)
                             .setTitle("Account Lock")
@@ -86,13 +91,19 @@ public class ActivityMain extends AppCompatActivity {
                 }
                 else if (userDirectory.getUserCredentials(inUser, inPassword) != 0)
                     if(userDirectory.getUserCredentials(inUser, inPassword) == 1) {
-                        startActivity(new Intent(ActivityMain.this, AdminListActivity.class));
+                        Intent intent = new Intent(ActivityMain.this, AdminListActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
                     }
                     else if(userDirectory.getUserCredentials(inUser, inPassword) == 2) {
-                        startActivity(new Intent(ActivityMain.this, ProjectSelection.class));
+                        Intent intent = new Intent(ActivityMain.this, ProjectSelection.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
                     }
                     else if(userDirectory.getUserCredentials(inUser, inPassword) == 3) {
-                        startActivity(new Intent(ActivityMain.this, EquipmentOptionsActivity.class));
+                        Intent intent = new Intent(ActivityMain.this, EquipmentOptionsActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
                     }
                     else{
                     trys++;

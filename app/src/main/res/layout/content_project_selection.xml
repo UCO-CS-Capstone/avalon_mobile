@@ -24,4 +24,5 @@
         android:onClick="startCostAnalysis"
         android:text="Cost Analysis"/>
 
+
 </android.support.v7.widget.LinearLayoutCompat>
