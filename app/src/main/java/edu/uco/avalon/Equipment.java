@@ -10,6 +10,8 @@ public class Equipment {
 
     public static ArrayList<String> typeList = new ArrayList<>(); //should be accessed from db
     public static ArrayList<Equipment> equipmentList = new ArrayList<>(); //should be accessed from db
+    //These two weren't in the individual report ^
+
     public static Equipment editOption;
     public static int id;
 
@@ -33,12 +35,12 @@ public class Equipment {
         return type;
     }
 
+    public boolean getActiveProject(){ return activeProject; }
+
     public void AddMaintenance (Maintenance m){
             maintenanceList.add(m);
             sortMaintenance();
     }
-
-    public boolean getActiveProject(){ return activeProject; }
 
     private void sortMaintenance(){
 

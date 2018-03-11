@@ -29,8 +29,12 @@ public class ProjectSelection extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Create a new project?", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Create a new project?", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+
+                //Start the Activity that creates the Activity.
+                Intent intent = new Intent(ProjectSelection.this, CreateProjectActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -111,5 +115,6 @@ public class ProjectSelection extends AppCompatActivity
     public void startCostAnalysis(View view) {
         Intent intent = new Intent(this, ActivityCost.class);
         startActivity(intent);
+
     }
 }
