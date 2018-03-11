@@ -1,6 +1,9 @@
 package edu.uco.avalon;
 
+
+import java.io.Serializable;
 import java.util.ArrayList;
+
 
 /**
  * Created by Michael Keller on 2/3/18.
@@ -8,10 +11,11 @@ import java.util.ArrayList;
  * Store the basic info needed for a project overview
  */
 
+
+public class Project implements Serializable {
 public class Project {
 
     public static ArrayList<Project> projectList = new ArrayList<>();
-
     private String name;
     private String startDate;
     private String estEndDate;
