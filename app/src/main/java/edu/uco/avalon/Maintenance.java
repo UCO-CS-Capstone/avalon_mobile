@@ -13,6 +13,8 @@ public class Maintenance {
     public static Maintenance editOption;
     public static int selected;
 
+    public static int id;
+
     private String date;
     private String type;
 

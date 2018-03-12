@@ -24,6 +24,7 @@ public class MaintenanceFragment extends Fragment {
     EditText date;
     EditText time;
     EditText detail;
+    Button delette;
 
     public MaintenanceFragment(){
 
@@ -39,7 +40,6 @@ public class MaintenanceFragment extends Fragment {
         time = (EditText) view.findViewById(R.id.TimeMaintenance);
         detail = (EditText) view.findViewById(R.id.maintenanceDetail);
 
-
         save = (Button) view.findViewById(R.id.saveMaintenanceButton);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,10 +49,35 @@ public class MaintenanceFragment extends Fragment {
 
             }
         });
+
+        if(this instanceof EditMaintenanceFragment){ //if in edit-mode, add the delete button stuff.
+            delette = view.findViewById(R.id.deletteMaintenanceButton);
+            delette.setVisibility(View.VISIBLE);
+            delette.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    deleteData(); //update to db
+                }
+            });
+
+            String Dates;
+            String Types;
+
+            Dates = Maintenance.editOption.getDate();
+            Types = Maintenance.editOption.getType();
+            myDate _d = new myDate(Dates);
+
+            date.setText(_d.getDate());
+            time.setText(_d.getTime());
+            detail.setText(Types);
+
+        }
         return view;
 
     }
-    private void addMaintenance(){
+
+    protected  void deleteData(){}
+    protected void addMaintenance(){
         String d = "";
         String comment="";
         d += date.getText().toString();
@@ -94,6 +119,16 @@ public class MaintenanceFragment extends Fragment {
         public String timestamp(){
             return "" + day + "/" + month + "/" + year + " " + hour + ":" + min;
         }
+        public String getDate(){
+
+            return "" + day + "/" + month + "/" + year;
+        }
+
+        public String getTime(){
+
+            return "" + hour + ":" + min;
+        }
+
         public int compareto(myDate d){
             int r=1;
             if(year < d.year) r= -1;
