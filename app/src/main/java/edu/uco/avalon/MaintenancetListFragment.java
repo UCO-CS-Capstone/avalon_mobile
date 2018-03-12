@@ -82,6 +82,19 @@ public class MaintenancetListFragment extends Fragment {
 
                     transaction.commit();
                 }
+                else{
+                    Maintenance.editOption = Equipment.equipmentList.get(Maintenance.selected).maintenanceList.get(i); //should get from DB
+
+                    Maintenance.id = i;
+
+                    Fragment addedFragment = new EditMaintenanceFragment();
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                    transaction.replace(R.id.fragment_container, addedFragment);
+                    transaction.addToBackStack(null);
+
+                    transaction.commit();
+                }
 
             }
         });

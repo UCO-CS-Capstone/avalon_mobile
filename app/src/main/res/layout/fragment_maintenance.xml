@@ -27,6 +27,18 @@
         android:ems="10"
         android:text="Save Item" />
 
+    <Button
+        android:id="@+id/deletteMaintenanceButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/saveMaintenanceButton"
+        android:layout_alignStart="@+id/saveMaintenanceButton"
+        android:layout_marginBottom="34dp"
+        android:ems="10"
+        android:text="Delette"
+        android:visibility="invisible"
+        android:textColor="@android:color/holo_red_light" />
+
 
     <EditText
         android:id="@+id/DateMaintenance"
