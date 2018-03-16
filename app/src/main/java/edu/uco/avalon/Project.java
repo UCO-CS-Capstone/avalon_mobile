@@ -2,7 +2,10 @@ package edu.uco.avalon;
 
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 
 /**
@@ -14,6 +17,7 @@ import java.util.ArrayList;
 
 public class Project implements Serializable {
     public static ArrayList<Project> projectList = new ArrayList<>();
+
     private String name;
     private String startDate;
     private String estEndDate;
@@ -32,13 +36,110 @@ public class Project implements Serializable {
         this.status = status;
     }
 
-    public Project(String name, String startDate, String estEndDate, String actualEndDate, double estCost, double currentCost){
+    public Project(String name, String startDate, String estEndDate, String actualEndDate, double estCost, String estCostString,
+                   double currentCost, String currentCostString){
         this.name = name;
         this.startDate = startDate;
         this.estEndDate = estEndDate;
         this.actualEndDate = actualEndDate;
         this.estCost = estCost;
+        this.estCostString = estCostString;
         this.currentCost = currentCost;
+        this.currentCostString = currentCostString;
+        this.status = "";
+    }
+
+    public Project(String name, String startDate, String estEndDate, String actualEndDate,
+                   double estCost, String estCostString, double currentCost, String currentCostString, String status){
+        this.name = name;
+        this.startDate = startDate;
+        this.estEndDate = estEndDate;
+        this.actualEndDate = actualEndDate;
+        this.estCost = estCost;
+        this.estCostString = estCostString;
+        this.currentCost = currentCost;
+        this.currentCostString = currentCostString;
+        this.status = status;
+    }
+
+
+    public int checkStatus(){
+
+        // 0          = no errors                         = BLUE
+        // 1 to 9     = warning                           = ORANGE
+        // 10 to 99   = important warning                 = RED
+
+        int warning = 0;
+        status = "";
+
+        //Check date stuff first
+        Date start_date, est_end_date, current_date = Calendar.getInstance().getTime();
+
+        try {
+            //have to be if/else or else java complains.
+            if(!startDate.equals("")) {
+                start_date = new SimpleDateFormat("MM/dd/yyyy").parse(startDate);
+            }
+            else{
+                start_date = new Date();
+            }
+
+            if(!estEndDate.equals("")) {
+                est_end_date = new SimpleDateFormat("MM/dd/yyyy").parse(estEndDate);
+            }
+            else{
+                est_end_date = new Date();
+            }
+
+            //if the current date is past the project's est date
+            if(!estEndDate.equals("") && current_date.after(est_end_date))
+            {
+                status += "Behind Schedule.\n\n";
+                warning++;
+            }
+            //if the project started after estDate, give a warning.
+            if(!startDate.equals("") && !estEndDate.equals("") && start_date.after(est_end_date))
+            {
+                status += "The start date for this project is after the estimated date.\n\n";
+                warning++;
+            }
+            if(estCost == currentCost){
+                status += "Current cost has reached its estimated cost. (" + currentCostString + " = " + estCostString + ")\n\n";
+                warning++;
+            }
+            else if(estCost < currentCost){
+                status += "Current cost exceeds estimated cost. (" + currentCostString + " < " + estCostString + ")\n\n";
+                warning += 10;
+            }
+
+
+            // 0          = no errors                         = BLUE
+            // 1          = warning                           = ORANGE
+            // 2          = important warning                 = RED
+            // 3          = finished project with errors      = YELLOW
+            // 4          = finished project with no errors.  = GREEN
+            if(!actualEndDate.equals("") && warning == 0){//if there is an actual end date and no errors.
+                status = "Project Finished.";
+                warning = 4;
+            }
+            else if(!actualEndDate.equals("") && warning > 0){ //if there is an actual end date with errors
+                status += "Project Finished.";
+                warning = 3;
+            }
+            else if(warning >= 10){ //if there is a major warning
+                warning = 2;
+            }
+            else if(warning > 0){//if there are only lesser warnings
+                warning = 1;
+            }
+            else if (warning == 0){
+                status = "On Schedule.";
+            }
+
+        }
+        catch(Exception e){}
+
+        return warning;
     }
 
     public String getName() {
@@ -89,7 +190,6 @@ public class Project implements Serializable {
         this.currentCost = currentCost;
     }
 
-
     public String getEstCostString() {
         return estCostString;
     }
@@ -112,5 +212,13 @@ public class Project implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getID(){
+        return id;
+    }
+
+    public void setID(int id){
+        this.id = id;
     }
 }
