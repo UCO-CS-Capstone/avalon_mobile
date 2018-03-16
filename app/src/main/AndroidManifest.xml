@@ -31,7 +31,8 @@
         <activity android:name=".ActivityCost" />
         <activity android:name=".ProjectDetails" />
         <activity android:name=".CreateProjectActivity" />
-        <activity android:name=".ProjectStatusActivity"></activity>
+        <activity android:name=".ProjectStatusActivity" />
+        <activity android:name=".MilestoneActivity"></activity>
     </application>
 
 </manifest>

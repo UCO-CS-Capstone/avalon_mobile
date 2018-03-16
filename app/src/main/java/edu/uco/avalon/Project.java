@@ -11,6 +11,9 @@ import java.util.Date;
 /**
  * Created by Michael Keller on 2/3/18.
  * Edited by Callie Driver 3/6/2018.
+ * Edited by Michael Keller 3/16/2018.
+ *      Cleaned up the code. Added milestones to a project.
+ *
  * Store the basic info needed for a project overview
  */
 
@@ -26,7 +29,8 @@ public class Project implements Serializable {
     private String actualEndDate;
     private double estCost;
     private double currentCost;
-    private String estCostString, currentCostString; //store the cost as a string so it is less processing later.
+    private String estCostString,
+                   currentCostString; //store the cost as a string so it is less processing later.
     private int id;
 
     public Project(String name, String startDate, String estEndDate, String status){
@@ -36,8 +40,9 @@ public class Project implements Serializable {
         this.status = status;
     }
 
-    public Project(String name, String startDate, String estEndDate, String actualEndDate, double estCost, String estCostString,
-                   double currentCost, String currentCostString){
+    public Project(String name, String startDate, String estEndDate, String actualEndDate,
+                   double estCost, String estCostString, double currentCost,
+                   String currentCostString){
         this.name = name;
         this.startDate = startDate;
         this.estEndDate = estEndDate;
@@ -50,7 +55,8 @@ public class Project implements Serializable {
     }
 
     public Project(String name, String startDate, String estEndDate, String actualEndDate,
-                   double estCost, String estCostString, double currentCost, String currentCostString, String status){
+                   double estCost, String estCostString, double currentCost,
+                   String currentCostString, String status){
         this.name = name;
         this.startDate = startDate;
         this.estEndDate = estEndDate;

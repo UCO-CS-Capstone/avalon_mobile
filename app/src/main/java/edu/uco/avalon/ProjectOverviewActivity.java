@@ -18,7 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class ProjectOverviewActivity extends AppCompatActivity {
-    private ArrayList<Project> projectModels = new ArrayList<>();;
+//    private ArrayList<Project> projectModels = new ArrayList<>();;
     private ListView lvProjectOverview;
     private ProjectOverviewAdapter projectOverviewAdapterdapter;
 
@@ -30,27 +30,36 @@ public class ProjectOverviewActivity extends AppCompatActivity {
         //For project overview
         lvProjectOverview = findViewById(R.id.projectOverviewList);
 
-//        projectModels.add(new Project("Oklahoma City South", "02/27/2018",
-//                "07/03/2018", "On Schedule"));
-//        projectModels.add(new Project("Oakland", "05/27/2018",
-//                "12/17/2019", "Equipment conflict"));
-//        projectModels.add(new Project("Dallas, TX", "01/15/2018",
-//                "06/14/2018", "Behind Schedule"));
-//        projectModels.add(new Project("New York", "02/12/2018",
-//                "01/23/2019", "On Schedule"));
-//        projectModels.add(new Project("Las Vegas", "03/07/2018",
-//                "07/03/2019", "On Schedule"));
-//        projectModels.add(new Project("Kansas City", "01/22/2018",
-//                "5/09/2018", "Doomed"));
-//        projectModels.add(new Project("Norman", "06/15/2018",
-//                "06/14/2019", "Not Schedule"));
-//        projectModels.add(new Project("Hell, Colorado", "01/13/2018",
-//                "10/07/2019", "Frozen Over"));
+        //Test data
+        //If there is already project don't add more
+        if(Project.projectList.size() == 0) {
+            Project.projectList.add(new Project("Oklahoma City South", "06/27/2018",
+                    "07/13/2018", "", 500, "$500", 250,
+                    "$250","On Schedule"));
+            Project.projectList.add(new Project("Oakland", "05/27/2018",
+                    "12/17/2019", "", 4000, "$4,000",500,
+                    "$500","On Schedule"));
+            Project.projectList.add(new Project("Dallas, TX", "01/15/2018",
+                    "03/14/2018", "", 5500, "$5,500",20,
+                    "$20","Behind Schedule"));
+            Project.projectList.add(new Project("New York", "02/12/2019",
+                    "01/23/2018", "", 999, "$999",999,
+                    "$999","Current cost has reached its estimated cost."));
+            Project.projectList.add(new Project("Las Vegas", "08/07/2018",
+                    "07/03/2019", "", 500, "$500",2050,
+                    "$2,050","Current cost exceeds estimated cost."));
+            Project.projectList.add(new Project("Kansas City", "01/22/2018",
+                    "5/09/2018", "03/15/2018", 30000, "$30,000",3000,
+                    "$3,000","Finished"));
+            Project.projectList.add(new Project("Arkham City", "01/22/2017",
+                    "5/09/2018", "03/15/2018", 3000, "$3,000",3000,
+                    "$3,000","Done"));
+        }
 
-        projectModels =Project.projectList ;
+//        projectModels =Project.projectList ;
 
         projectOverviewAdapterdapter = new ProjectOverviewAdapter(
-                projectModels, getApplicationContext());
+                Project.projectList, getApplicationContext());
 
         lvProjectOverview.setAdapter(projectOverviewAdapterdapter);
 
@@ -106,7 +115,7 @@ public class ProjectOverviewActivity extends AppCompatActivity {
         lvProjectOverview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Project projectModel = projectModels.get(position);
+                Project projectModel = Project.projectList.get(position);
 
                 gotoProjectDetails(projectModel, position);
 
@@ -133,10 +142,8 @@ public class ProjectOverviewActivity extends AppCompatActivity {
                 Project project = (Project) intent.getSerializableExtra("Project");
                 int position = intent.getIntExtra("Position", -1);
 
-                projectModels.set(position, project);
+                Project.projectList.set(position, project);
                 lvProjectOverview.invalidateViews(); //Update the changes
-
-                Toast.makeText(getApplicationContext(), project.getName(), Toast.LENGTH_SHORT).show();
             }
         }
     }
