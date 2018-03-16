@@ -110,9 +110,7 @@ public class CreateProjectActivity extends AppCompatActivity{
                     actualEndDate = actualEndDateEdit.getText().toString().trim();
                     fixMoneyString(); //fix possible errors with the money strings
 
-                    Project newProject = new Project(name, startDate, estEndDate, actualEndDate, estCost, currentCost);
-                    newProject.setEstCostString(estCostString);
-                    newProject.setCurrentCostString((currentCostString));
+                    Project newProject = new Project(name, startDate, estEndDate, actualEndDate, estCost, estCostString, currentCost, currentCostString);
 
                     Project.projectList.add(newProject);
 
@@ -135,7 +133,7 @@ public class CreateProjectActivity extends AppCompatActivity{
         String tempMoney = estCostEdit.getText().toString();
         if(tempMoney.equals("")){
             estCost = 0.00;
-            estCostString = "$ 0.00";
+            estCostString = "$0.00";
         }
         else {
             //if the first character is a ".", concat a 0 onto the front of the dollar
@@ -146,7 +144,7 @@ public class CreateProjectActivity extends AppCompatActivity{
             if (tempMoney.contains(".") && tempMoney.indexOf(".") + 3 != tempMoney.length()) {
                 tempMoney += "0";
             }
-            estCostString = "$ " + tempMoney;
+            estCostString = "$" + tempMoney;
             //if there are commas in the string, take them out so it can be converted to a double.
             if(tempMoney.contains(",")){
                 tempMoney = tempMoney.replaceAll(",", "");
@@ -157,7 +155,7 @@ public class CreateProjectActivity extends AppCompatActivity{
         tempMoney = currentCostEdit.getText().toString();
         if(tempMoney.equals("")){
             currentCost = 0.00;
-            currentCostString = "$ 0.00";
+            currentCostString = "$0.00";
         }
         else {
             //if the first character is a ".", concat a 0 onto the front of the dollar
@@ -168,7 +166,7 @@ public class CreateProjectActivity extends AppCompatActivity{
             if (tempMoney.contains(".") && tempMoney.indexOf(".") + 3 != tempMoney.length()) {
                 tempMoney += "0";
             }
-            currentCostString = "$ " + tempMoney;
+            currentCostString = "$" + tempMoney;
             //if there are commas in the string, take them out so it can be converted to a double.
             if(tempMoney.contains(",")){
                 tempMoney = tempMoney.replaceAll(",", "");

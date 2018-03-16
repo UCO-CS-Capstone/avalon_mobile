@@ -12,11 +12,6 @@ public class EquipmentOptionsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment_container);
 
-        Equipment.typeList.add("Type 1");
-        Equipment.typeList.add("Type 2");
-        Equipment.typeList.add("Type 3");
-        Equipment.typeList.add("Type 4");
-
         Fragment addedFragment = new EquipmentOptionsFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
