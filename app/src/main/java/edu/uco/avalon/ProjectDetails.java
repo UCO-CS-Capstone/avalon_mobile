@@ -46,4 +46,9 @@ public class ProjectDetails extends AppCompatActivity {
         setResult(RESULT_OK, intent);
         finish();
     }
+
+    public void createMileStone(View view){
+        Intent myIntent = new Intent(this, MilestoneActivity.class);
+        this.startActivity(myIntent);
+    }
 }

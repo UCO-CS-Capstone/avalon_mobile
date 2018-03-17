@@ -13,14 +13,10 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 public class ProjectOverviewActivity extends AppCompatActivity {
-//    private ArrayList<Project> projectModels = new ArrayList<>();;
     private ListView lvProjectOverview;
-    private ProjectOverviewAdapter projectOverviewAdapterdapter;
+    private ProjectOverviewAdapter projectOverviewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +27,7 @@ public class ProjectOverviewActivity extends AppCompatActivity {
         lvProjectOverview = findViewById(R.id.projectOverviewList);
 
         //Test data
-        //If there is already project don't add more
+        //If there is already 1 project don't add more
         if(Project.projectList.size() == 0) {
             Project.projectList.add(new Project("Oklahoma City South", "06/27/2018",
                     "07/13/2018", "", 500, "$500", 250,
@@ -56,12 +52,10 @@ public class ProjectOverviewActivity extends AppCompatActivity {
                     "$3,000","Done"));
         }
 
-//        projectModels =Project.projectList ;
-
-        projectOverviewAdapterdapter = new ProjectOverviewAdapter(
+        projectOverviewAdapter = new ProjectOverviewAdapter(
                 Project.projectList, getApplicationContext());
 
-        lvProjectOverview.setAdapter(projectOverviewAdapterdapter);
+        lvProjectOverview.setAdapter(projectOverviewAdapter);
 
         lvProjectOverview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
         lvProjectOverview.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
@@ -156,6 +150,6 @@ public class ProjectOverviewActivity extends AppCompatActivity {
                 Project.projectList.remove(selected.keyAt(i));
             }
         }
-        projectOverviewAdapterdapter.notifyDataSetChanged();
+        projectOverviewAdapter.notifyDataSetChanged();
     }
 }

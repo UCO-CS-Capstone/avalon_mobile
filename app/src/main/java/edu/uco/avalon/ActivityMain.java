@@ -30,28 +30,6 @@ public class ActivityMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Project.projectList.add(new Project("Oklahoma City South", "06/27/2018",
-//                "07/13/2018", "", 500, "$500", 250,
-//                "$250","On Schedule"));
-//        Project.projectList.add(new Project("Oakland", "05/27/2018",
-//                "12/17/2019", "", 4000, "$4,000",500,
-//                "$500","On Schedule"));
-//        Project.projectList.add(new Project("Dallas, TX", "01/15/2018",
-//                "03/14/2018", "", 5500, "$5,500",20,
-//                "$20","Behind Schedule"));
-//        Project.projectList.add(new Project("New York", "02/12/2019",
-//                "01/23/2018", "", 999, "$999",999,
-//                "$999","Current cost has reached its estimated cost."));
-//        Project.projectList.add(new Project("Las Vegas", "08/07/2018",
-//                "07/03/2019", "", 500, "$500",2050,
-//                "$2,050","Current cost exceeds estimated cost."));
-//        Project.projectList.add(new Project("Kansas City", "01/22/2018",
-//                "5/09/2018", "03/15/2018", 30000, "$30,000",3000,
-//                "$3,000","Finished"));
-//        Project.projectList.add(new Project("Arkham City", "01/22/2017",
-//                "5/09/2018", "03/15/2018", 3000, "$3,000",3000,
-//                "$3,000","Done"));
-
         Equipment.typeList.add("Type 1");
         Equipment.typeList.add("Type 2");
         Equipment.typeList.add("Type 3");
@@ -169,5 +147,4 @@ public class ActivityMain extends AppCompatActivity {
         Intent intent = new Intent(this, ProjectSelection.class);
         startActivity(intent);
     }
-
 }
