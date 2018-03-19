@@ -6,27 +6,31 @@ import java.io.Serializable;
  * Created by mk on 3/16/18.
  */
 
-public class MileStone implements Serializable {
+public class Milestone implements Serializable {
     private int projectID;
+    private int id;
+    private String milestoneName;
     private String projectName;
     private double cost;
     private String startDate;
-    private String endDate;
+    private String estEndDate;
 
-    public MileStone(int projectID, String projectName, double cost, String startDate, String endDate){
+    public Milestone(int projectID, String milestoneName, String projectName, double cost,
+                     String startDate, String estEndDate) {
         this.projectID = projectID;
+        this.milestoneName = milestoneName;
         this.projectName = projectName;
         this.cost = cost;
         this.startDate = startDate;
-        this.endDate = endDate;
+        this.estEndDate = estEndDate;
     }
 
-    public String getEndDate() {
-        return endDate;
+    public String getEstEndDate() {
+        return estEndDate;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setEstEndDate(String endDate) {
+        this.estEndDate = endDate;
     }
 
     public int getProjectID() {
@@ -59,5 +63,21 @@ public class MileStone implements Serializable {
 
     public void setProjectName(String projectName) {
         this.projectName = projectName;
+    }
+
+    public String getMilestoneName() {
+        return milestoneName;
+    }
+
+    public void setMilestoneName(String milestoneName) {
+        this.milestoneName = milestoneName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

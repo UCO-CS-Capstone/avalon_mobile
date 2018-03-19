@@ -32,7 +32,7 @@
         <activity android:name=".ProjectDetails" />
         <activity android:name=".CreateProjectActivity" />
         <activity android:name=".ProjectStatusActivity" />
-        <activity android:name=".MilestoneActivity"></activity>
+        <activity android:name=".MilestoneDetailsActivity"></activity>
     </application>
 
 </manifest>

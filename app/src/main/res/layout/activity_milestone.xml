@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.uco.avalon.MilestoneActivity">
+    tools:context="edu.uco.avalon.MilestoneDetailsActivity">
 
     <TextView
         android:id="@+id/textView4"
@@ -17,11 +17,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvProject"
+        android:id="@+id/tvProjectName"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
         android:layout_marginStart="8dp"
-        android:text="TextView"
+        android:text="Project"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -33,7 +33,7 @@
         android:layout_marginStart="8dp"
         android:text="Start Date"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProject" />
+        app:layout_constraintTop_toBottomOf="@+id/etMilesoneName" />
 
     <EditText
         android:id="@+id/etStartDate"
@@ -51,12 +51,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="End Date"
+        android:text="Estimated End Date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etStartDate" />
 
     <EditText
-        android:id="@+id/etEndDate"
+        android:id="@+id/etEstEndDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -71,17 +71,38 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Cost"
+        android:text="Estimated Cost"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEndDate" />
+        app:layout_constraintTop_toBottomOf="@+id/etEstEndDate" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Milestone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvProjectName" />
 
     <EditText
-        android:id="@+id/etCost"
+        android:id="@+id/etMilesoneName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:ems="10"
-        android:inputType="numberDecimal"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/tvEstCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="$1000.00"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
