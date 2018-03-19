@@ -21,7 +21,7 @@ import java.util.Date;
 public class Project implements Serializable {
     public static ArrayList<Project> projectList = new ArrayList<>();
 
-    private ArrayList<MileStone> milestones = new ArrayList<>();
+    public static ArrayList<MileStone> milestones = new ArrayList<>();
 
     private String name;
     private String startDate;

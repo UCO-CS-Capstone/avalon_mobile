@@ -11,7 +11,7 @@ public class ProjectDetails extends AppCompatActivity {
                      startDate,
                      endDate;
     private Project project;
-    private int position; //Keeps track of the project location in the array until database is used
+    private int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,14 +20,15 @@ public class ProjectDetails extends AppCompatActivity {
 
         //Get info from intent
         Intent intent = getIntent();
-        project = (Project) intent.getSerializableExtra("Project");
-        position = intent.getIntExtra("Position", -1);
+        id = intent.getIntExtra("ID", -1);
 
         projectName = findViewById(R.id.etProjectName);
         startDate = findViewById(R.id.etStartDate);
         endDate = findViewById(R.id.etEndDate);
 
-        if(project != null){
+        if(id != -1){
+            project = Project.projectList.get(id);
+
             projectName.setText(project.getName());
             startDate.setText(project.getStartDate());
             endDate.setText(project.getEstEndDate());
@@ -40,8 +41,7 @@ public class ProjectDetails extends AppCompatActivity {
         project.setStartDate(startDate.getText().toString());
 
         Intent intent = new Intent();
-        intent.putExtra("Project", project);
-        intent.putExtra("Position", position);
+        intent.putExtra("ID", id);
 
         setResult(RESULT_OK, intent);
         finish();
