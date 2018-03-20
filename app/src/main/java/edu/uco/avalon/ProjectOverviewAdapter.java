@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by Michael Kelelr on 2/5/18.
+ * Created by Michael Keller on 2/5/18.
  * Edited by Callie Driver on 3/6/2018.
  * Edited by Michael Keller 0n 3/16/2018
  *        Cleaned up the code and added milestone to the projects

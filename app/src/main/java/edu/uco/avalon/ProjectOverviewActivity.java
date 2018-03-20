@@ -90,7 +90,7 @@ public class ProjectOverviewActivity extends AppCompatActivity {
 
     public void gotoProjectDetails(Project projectModel, int position) {
         Intent intent = new Intent(this, ProjectDetails.class);
-        intent.putExtra("ID", position);
+        intent.putExtra("ProjectID", position);
 
         startActivityForResult(intent, 1);
     }
@@ -149,5 +149,10 @@ public class ProjectOverviewActivity extends AppCompatActivity {
         for(int x = 0; x < Project.projectList.size(); x++){
             Project.projectList.get(x).setID(x);
         }
+
+        //Create some milestones for the projects
+        Project.projectList.get(1).milestones.add(new Milestone(1,
+                "Drilling", Project.projectList.get(1).getName(), 55000,
+                "1/22/2019","6/12/2019"));
     }
 }

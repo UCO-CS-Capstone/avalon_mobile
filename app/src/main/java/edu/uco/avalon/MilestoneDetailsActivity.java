@@ -9,7 +9,9 @@ import android.widget.TextView;
 
 public class MilestoneDetailsActivity extends AppCompatActivity {
     private Milestone milestone;
-    private int id;
+    private Project project;
+    private int id,
+                projectID;
 
     private TextView projectName,
                      estCost;
@@ -25,6 +27,7 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
         //Get info from intent
         Intent intent = getIntent();
         id = intent.getIntExtra("ID", -1);
+        projectID = intent.getIntExtra("ProjectID", -1);
 
         projectName = findViewById(R.id.tvProjectName);
         estCost = findViewById(R.id.tvEstCost);
@@ -32,8 +35,9 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
         estEndDate = findViewById(R.id.etEstEndDate);
         milestoneName = findViewById(R.id.etMilesoneName);
 
-        if(id != -1){
-            milestone = Project.milestones.get(id);
+        if(projectID != -1){
+            project = Project.projectList.get(projectID);
+            milestone = project.milestones.get(id);
 
             projectName.setText(Project.projectList.get(milestone.getProjectID()).getName());
             estCost.setText(String.valueOf(milestone.getCost()));
@@ -47,6 +51,8 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
         milestone.setMilestoneName(milestoneName.getText().toString());
         milestone.setEstEndDate(estEndDate.getText().toString());
         milestone.setStartDate(startDate.getText().toString());
+
+//        if()
 
         Intent intent = new Intent();
         intent.putExtra("ID", id);

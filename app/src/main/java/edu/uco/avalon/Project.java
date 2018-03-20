@@ -7,21 +7,19 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-
 /**
  * Created by Michael Keller on 2/3/18.
  * Edited by Callie Driver 3/6/2018.
  * Edited by Michael Keller 3/16/2018.
  *      Cleaned up the code. Added milestones to a project.
  *
- * Store the basic info needed for a project overview
  */
 
-
 public class Project implements Serializable {
-    public static ArrayList<Project> projectList = new ArrayList<>();
+    static ArrayList<Project> projectList = new ArrayList<>();
 
-    public static ArrayList<Milestone> milestones = new ArrayList<>();
+    //Store all of the milestones for a project
+    ArrayList<Milestone> milestones = new ArrayList<>();
 
     private String name;
     private String startDate;

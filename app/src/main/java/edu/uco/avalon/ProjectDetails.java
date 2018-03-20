@@ -20,7 +20,7 @@ public class ProjectDetails extends AppCompatActivity {
 
         //Get info from intent
         Intent intent = getIntent();
-        id = intent.getIntExtra("ID", -1);
+        id = intent.getIntExtra("ProjectID", -1);
 
         projectName = findViewById(R.id.etProjectName);
         startDate = findViewById(R.id.etStartDate);
@@ -41,14 +41,17 @@ public class ProjectDetails extends AppCompatActivity {
         project.setStartDate(startDate.getText().toString());
 
         Intent intent = new Intent();
-        intent.putExtra("ID", id);
+        intent.putExtra("ProjectID", id);
 
         setResult(RESULT_OK, intent);
         finish();
     }
 
     public void createMileStone(View view){
-        Intent myIntent = new Intent(this, MilestoneDetailsActivity.class);
-        this.startActivity(myIntent);
+        Intent intent = new Intent(this, MilestoneDetailsActivity.class);
+        intent.putExtra("ProjectID", id);
+
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }
