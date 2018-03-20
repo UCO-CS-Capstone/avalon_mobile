@@ -148,7 +148,7 @@ public class ProjectDetails extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, intent);
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-                lvMilestones.invalidateViews(); //Update the changes            }
+                lvMilestones.invalidateViews(); //Update the changes
             }
         }
     }

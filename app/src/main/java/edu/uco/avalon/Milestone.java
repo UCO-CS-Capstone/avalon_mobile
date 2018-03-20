@@ -92,7 +92,6 @@ public class Milestone implements Serializable {
         int min = 5000;
 
         Random rand = new Random();
-
         int loops = rand.nextInt((5-1)+1);
 
         for(int x = 0; x < loops +1; x++)

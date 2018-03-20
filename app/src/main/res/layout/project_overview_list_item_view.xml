@@ -18,6 +18,7 @@
         android:text="Project Name"
         android:textAlignment="center"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.296"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +32,7 @@
         android:layout_marginTop="8dp"
         android:text="Estimated End Date"
         android:textAppearance="@android:style/TextAppearance.Material.Small"
+        android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textMilestoneName" />
 
@@ -42,6 +44,7 @@
         android:layout_marginTop="8dp"
         android:text="Date"
         android:textAppearance="@android:style/TextAppearance.Material.Small"
+        android:textColor="@android:color/black"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textMilestoneName" />
 
@@ -53,6 +56,7 @@
         android:layout_marginTop="4dp"
         android:text="Current Cost"
         android:textAppearance="@android:style/TextAppearance.Material.Small"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textMilestoneName" />
 
@@ -63,6 +67,7 @@
         android:layout_marginStart="8dp"
         android:text="0.00"
         android:textAppearance="@android:style/TextAppearance.Material.Small"
+        android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -74,6 +79,7 @@
         android:layout_marginTop="6dp"
         android:focusable="false"
         android:text="Status"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textCurrentCost" />
 
@@ -84,6 +90,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="Current Milestone"
+        android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -91,8 +98,11 @@
         android:id="@+id/tvCurrentMilestone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 

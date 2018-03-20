@@ -1,6 +1,8 @@
 package edu.uco.avalon;
 
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public class Project implements Serializable {
     private String startDate;
     private String estEndDate;
     private String status;
+    private String currentMilestone = "";
 
     private String actualEndDate;
     private double estCost;
@@ -67,7 +70,6 @@ public class Project implements Serializable {
         this.currentCostString = currentCostString;
         this.status = status;
     }
-
 
     public int checkStatus(){
 
@@ -143,7 +145,9 @@ public class Project implements Serializable {
             }
 
         }
-        catch(Exception e){}
+        catch(Exception e){
+            Log.e("Project", e.toString());
+        }
 
         return warning;
     }
@@ -226,5 +230,13 @@ public class Project implements Serializable {
 
     public void setID(int id){
         this.id = id;
+    }
+
+    public String getCurrentMilestone() {
+        return currentMilestone;
+    }
+
+    public void setCurrentMilestone(String currentMilestone) {
+        this.currentMilestone = currentMilestone;
     }
 }

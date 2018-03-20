@@ -30,6 +30,7 @@ public class ProjectOverviewAdapter extends ArrayAdapter<Project> {
         TextView textProjectName;
         TextView textEstEndDate;
         TextView textCurrentCost;
+        TextView tvCurrentMilestone;
 
         Button buttonStatus;
     }
@@ -53,11 +54,11 @@ public class ProjectOverviewAdapter extends ArrayAdapter<Project> {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.project_overview_list_item_view, parent, false);
-            viewHolder.textProjectName = (TextView) convertView.findViewById(R.id.textMilestoneName);
-            viewHolder.textEstEndDate = (TextView) convertView.findViewById(R.id.textEstEndDate);
-            viewHolder.textCurrentCost = (TextView) convertView.findViewById(R.id.textCurrentCost);
+            viewHolder.textProjectName = convertView.findViewById(R.id.textMilestoneName);
+            viewHolder.textEstEndDate = convertView.findViewById(R.id.textEstEndDate);
+            viewHolder.textCurrentCost = convertView.findViewById(R.id.textCurrentCost);
             viewHolder.buttonStatus= convertView.findViewById(R.id.buttonStatus);
-
+            viewHolder.tvCurrentMilestone = convertView.findViewById(R.id.tvCurrentMilestone);
 
             convertView.setTag(viewHolder);
         } else {
@@ -79,6 +80,7 @@ public class ProjectOverviewAdapter extends ArrayAdapter<Project> {
         viewHolder.textProjectName.setText(project.getName());
         viewHolder.textEstEndDate.setText(project.getEstEndDate());
         viewHolder.textCurrentCost.setText(project.getCurrentCostString());
+        viewHolder.tvCurrentMilestone.setText(project.getCurrentMilestone());
 
 
         //if project.checkStatus() == true, change button color to yellow,
