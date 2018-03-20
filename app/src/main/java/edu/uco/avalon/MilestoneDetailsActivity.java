@@ -6,11 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MilestoneDetailsActivity extends AppCompatActivity {
     private Milestone milestone;
     private Project project;
-    private int id,
+    private int milestoneID,
                 projectID;
 
     private TextView projectName,
@@ -26,7 +27,7 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
 
         //Get info from intent
         Intent intent = getIntent();
-        id = intent.getIntExtra("ID", -1);
+        milestoneID = intent.getIntExtra("MilestoneID", -1);
         projectID = intent.getIntExtra("ProjectID", -1);
 
         projectName = findViewById(R.id.tvProjectName);
@@ -37,13 +38,17 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
 
         if(projectID != -1){
             project = Project.projectList.get(projectID);
-            milestone = project.milestones.get(id);
 
-            projectName.setText(Project.projectList.get(milestone.getProjectID()).getName());
-            estCost.setText(String.valueOf(milestone.getCost()));
-            startDate.setText(milestone.getStartDate());
-            estEndDate.setText(milestone.getEstEndDate());
-            milestoneName.setText(milestone.getMilestoneName());
+            //Check to see if its a new milestone before pulling info
+            if(milestoneID != -1) {
+                milestone = project.milestones.get(milestoneID);
+                estCost.setText(String.valueOf(milestone.getCost()));
+                startDate.setText(milestone.getStartDate());
+                estEndDate.setText(milestone.getEstEndDate());
+                milestoneName.setText(milestone.getMilestoneName());
+            }
+
+            projectName.setText(Project.projectList.get(projectID).getName());
         }
     }
 
@@ -55,7 +60,7 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
 //        if()
 
         Intent intent = new Intent();
-        intent.putExtra("ID", id);
+        intent.putExtra("MilestoneID", milestoneID);
 
         setResult(RESULT_OK, intent);
         finish();

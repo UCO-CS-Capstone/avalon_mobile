@@ -11,7 +11,7 @@ public class ProjectDetails extends AppCompatActivity {
                      startDate,
                      endDate;
     private Project project;
-    private int id;
+    private int projectID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,14 +20,14 @@ public class ProjectDetails extends AppCompatActivity {
 
         //Get info from intent
         Intent intent = getIntent();
-        id = intent.getIntExtra("ProjectID", -1);
+        projectID = intent.getIntExtra("ProjectID", -1);
 
         projectName = findViewById(R.id.etProjectName);
         startDate = findViewById(R.id.etStartDate);
         endDate = findViewById(R.id.etEndDate);
 
-        if(id != -1){
-            project = Project.projectList.get(id);
+        if(projectID != -1){
+            project = Project.projectList.get(projectID);
 
             projectName.setText(project.getName());
             startDate.setText(project.getStartDate());
@@ -41,7 +41,7 @@ public class ProjectDetails extends AppCompatActivity {
         project.setStartDate(startDate.getText().toString());
 
         Intent intent = new Intent();
-        intent.putExtra("ProjectID", id);
+        intent.putExtra("ProjectID", projectID);
 
         setResult(RESULT_OK, intent);
         finish();
@@ -49,9 +49,18 @@ public class ProjectDetails extends AppCompatActivity {
 
     public void createMileStone(View view){
         Intent intent = new Intent(this, MilestoneDetailsActivity.class);
-        intent.putExtra("ProjectID", id);
+        intent.putExtra("ProjectID", projectID);
+        intent.putExtra("MilestoneID", -1); //No id yet
 
-        setResult(RESULT_OK, intent);
-        finish();
+        startActivityForResult(intent, 1);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                //Update the changes
+            }
+        }
     }
 }
