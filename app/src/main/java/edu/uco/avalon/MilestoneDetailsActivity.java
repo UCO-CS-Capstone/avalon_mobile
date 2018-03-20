@@ -57,12 +57,7 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
         milestone.setEstEndDate(estEndDate.getText().toString());
         milestone.setStartDate(startDate.getText().toString());
 
-//        if()
-
-        Intent intent = new Intent();
-        intent.putExtra("MilestoneID", milestoneID);
-
-        setResult(RESULT_OK, intent);
+        setResult(RESULT_OK);
         finish();
     }
 }

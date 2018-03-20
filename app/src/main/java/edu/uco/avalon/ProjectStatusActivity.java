@@ -3,7 +3,6 @@ package edu.uco.avalon;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ProjectStatusActivity extends AppCompatActivity {
 
@@ -14,7 +13,7 @@ public class ProjectStatusActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_status);
 
-        projectNameText = findViewById(R.id.textProjectName);
+        projectNameText = findViewById(R.id.textMilestoneName);
         projectStatusText = findViewById(R.id.textProjectStatus);
 
         final int position = getIntent().getIntExtra("Position", -1);

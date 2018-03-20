@@ -154,5 +154,14 @@ public class ProjectOverviewActivity extends AppCompatActivity {
         Project.projectList.get(1).milestones.add(new Milestone(1,
                 "Drilling", Project.projectList.get(1).getName(), 55000,
                 "1/22/2019","6/12/2019"));
+        Project.projectList.get(1).milestones.add(new Milestone(1,
+                "Pump Building" , Project.projectList.get(1).getName(), 1255000,
+                "6/02/2019","12/12/2019"));
+        Project.projectList.get(1).milestones.add(new Milestone(1,
+                "Fencing", Project.projectList.get(1).getName(), 67330,
+                "1/12/2020","2/12/2020"));
+        Project.projectList.get(1).milestones.add(new Milestone(1,
+                "Station Building" , Project.projectList.get(1).getName(),
+                1255000,"3/16/2020","7/02/2020"));
     }
 }

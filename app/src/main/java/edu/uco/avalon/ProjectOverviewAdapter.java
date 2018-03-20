@@ -53,7 +53,7 @@ public class ProjectOverviewAdapter extends ArrayAdapter<Project> {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.project_overview_list_item_view, parent, false);
-            viewHolder.textProjectName = (TextView) convertView.findViewById(R.id.textProjectName);
+            viewHolder.textProjectName = (TextView) convertView.findViewById(R.id.textMilestoneName);
             viewHolder.textEstEndDate = (TextView) convertView.findViewById(R.id.textEstEndDate);
             viewHolder.textCurrentCost = (TextView) convertView.findViewById(R.id.textCurrentCost);
             viewHolder.buttonStatus= convertView.findViewById(R.id.buttonStatus);

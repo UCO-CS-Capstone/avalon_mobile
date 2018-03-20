@@ -82,7 +82,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listView3" />
+        app:layout_constraintTop_toBottomOf="@+id/lvMilestones" />
 
     <TextView
         android:id="@+id/textView4"
@@ -95,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@+id/etEndDate" />
 
     <ListView
-        android:id="@+id/listView3"
+        android:id="@+id/lvMilestones"
         android:layout_width="368dp"
         android:layout_height="164dp"
         android:layout_marginBottom="8dp"
