@@ -1,9 +1,12 @@
 package edu.uco.avalon;
 
 import java.io.Serializable;
+import java.util.Random;
 
 /**
- * Created by mk on 3/16/18.
+ * Created by Michael Keller on 3/16/18.
+ *
+ * Small manageable part of a project
  */
 
 public class Milestone implements Serializable {
@@ -14,6 +17,8 @@ public class Milestone implements Serializable {
     private double cost;
     private String startDate;
     private String estEndDate;
+
+    public Milestone(){}
 
     public Milestone(int projectID, String milestoneName, String projectName, double cost,
                      String startDate, String estEndDate) {
@@ -79,5 +84,18 @@ public class Milestone implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    //For testing only price will be auto generated based on equipment
+    public void generateCosts(){
+        int max = 75000;
+        int min = 5000;
+
+        Random rand = new Random();
+
+        int loops = rand.nextInt((5-1)+1);
+
+        for(int x = 0; x < loops +1; x++)
+            cost += rand.nextInt((max - min) + 1) + min;
     }
 }

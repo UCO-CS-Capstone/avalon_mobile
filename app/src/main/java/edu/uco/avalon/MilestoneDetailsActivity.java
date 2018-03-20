@@ -47,6 +47,9 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
                 estEndDate.setText(milestone.getEstEndDate());
                 milestoneName.setText(milestone.getMilestoneName());
             }
+            else{
+                milestone = new Milestone();
+            }
 
             projectName.setText(Project.projectList.get(projectID).getName());
         }
@@ -56,6 +59,15 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
         milestone.setMilestoneName(milestoneName.getText().toString());
         milestone.setEstEndDate(estEndDate.getText().toString());
         milestone.setStartDate(startDate.getText().toString());
+        milestone.setMilestoneName(milestoneName.getText().toString());
+
+        milestone.generateCosts();
+
+        //If a new milestone add to the array list
+        if(milestoneID == -1){
+            Project.projectList.get(projectID).milestones.add(milestone);
+            milestone.setId(Project.projectList.get(projectID).milestones.size()-1);
+        }
 
         setResult(RESULT_OK);
         finish();
