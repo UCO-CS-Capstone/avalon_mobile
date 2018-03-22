@@ -123,6 +123,12 @@ public class ProjectDetails extends AppCompatActivity {
                 Project.projectList.get(projectID).milestones.remove(selected.keyAt(i));
             }
         }
+
+        //Check to see if there are any milestones
+        if(project.milestones.size() == 0){
+            project.setCurrentMilestone("");
+        }
+
         milestoneOverviewAdapter.notifyDataSetChanged();
     }
 

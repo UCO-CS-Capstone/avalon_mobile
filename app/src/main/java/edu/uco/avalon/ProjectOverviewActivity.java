@@ -97,11 +97,11 @@ public class ProjectOverviewActivity extends AppCompatActivity {
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
-        if (requestCode == 1) {
-            if(resultCode == RESULT_OK) {
+//        if (requestCode == 1) {
+//            if(resultCode == RESULT_OK) {
                 lvProjectOverview.invalidateViews(); //Update the changes
-            }
-        }
+//            }
+//        }
     }
 
     private void deleteData() {

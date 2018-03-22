@@ -69,6 +69,9 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
             milestone.setId(Project.projectList.get(projectID).milestones.size()-1);
         }
 
+        //Set the first milestone in the array as the current
+        project.setCurrentMilestone(project.milestones.get(0).getMilestoneName());
+
         setResult(RESULT_OK);
         finish();
     }
