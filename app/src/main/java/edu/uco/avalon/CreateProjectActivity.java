@@ -114,6 +114,9 @@ public class CreateProjectActivity extends AppCompatActivity{
 
                     Project.projectList.add(newProject);
 
+                    //Set the index of the project in the array as the id until database is made
+                    newProject.setID(Project.projectList.size()-1);
+
                     //if saving was successful
                     Toast.makeText(CreateProjectActivity.this, "Saved Successfully.", Toast.LENGTH_SHORT).show();
                     finish();

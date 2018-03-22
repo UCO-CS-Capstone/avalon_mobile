@@ -1,7 +1,6 @@
 package edu.uco.avalon;
 
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
@@ -13,47 +12,23 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 public class ProjectOverviewActivity extends AppCompatActivity {
-    private ArrayList<Project> projectModels = new ArrayList<>();;
     private ListView lvProjectOverview;
-    private ProjectOverviewAdapter projectOverviewAdapterdapter;
+    private ProjectOverviewAdapter projectOverviewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.project_overview);
 
+        testData();
+
         //For project overview
         lvProjectOverview = findViewById(R.id.projectOverviewList);
-
-//        projectModels.add(new Project("Oklahoma City South", "02/27/2018",
-//                "07/03/2018", "On Schedule"));
-//        projectModels.add(new Project("Oakland", "05/27/2018",
-//                "12/17/2019", "Equipment conflict"));
-//        projectModels.add(new Project("Dallas, TX", "01/15/2018",
-//                "06/14/2018", "Behind Schedule"));
-//        projectModels.add(new Project("New York", "02/12/2018",
-//                "01/23/2019", "On Schedule"));
-//        projectModels.add(new Project("Las Vegas", "03/07/2018",
-//                "07/03/2019", "On Schedule"));
-//        projectModels.add(new Project("Kansas City", "01/22/2018",
-//                "5/09/2018", "Doomed"));
-//        projectModels.add(new Project("Norman", "06/15/2018",
-//                "06/14/2019", "Not Schedule"));
-//        projectModels.add(new Project("Hell, Colorado", "01/13/2018",
-//                "10/07/2019", "Frozen Over"));
-
-        projectModels =Project.projectList ;
-
-        projectOverviewAdapterdapter = new ProjectOverviewAdapter(
-                projectModels, getApplicationContext());
-
-        lvProjectOverview.setAdapter(projectOverviewAdapterdapter);
-
+        projectOverviewAdapter = new ProjectOverviewAdapter(
+                Project.projectList, getApplicationContext());
+        lvProjectOverview.setAdapter(projectOverviewAdapter);
         lvProjectOverview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
         lvProjectOverview.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
 
@@ -106,22 +81,16 @@ public class ProjectOverviewActivity extends AppCompatActivity {
         lvProjectOverview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Project projectModel = projectModels.get(position);
+                Project projectModel = Project.projectList.get(position);
 
                 gotoProjectDetails(projectModel, position);
-
-                Snackbar.make(view, projectModel.getName() + "\n" + "Start Date: " +
-                        projectModel.getStartDate() + "\n" + "End Date: " +
-                        projectModel.getEstEndDate(), Snackbar.LENGTH_LONG)
-                        .setAction("No action", null).show();
             }
         });
     }
 
     public void gotoProjectDetails(Project projectModel, int position) {
         Intent intent = new Intent(this, ProjectDetails.class);
-        intent.putExtra("Project", projectModel);
-        intent.putExtra("Position", position);
+        intent.putExtra("ProjectID", position);
 
         startActivityForResult(intent, 1);
     }
@@ -130,13 +99,7 @@ public class ProjectOverviewActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, intent);
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
-                Project project = (Project) intent.getSerializableExtra("Project");
-                int position = intent.getIntExtra("Position", -1);
-
-                projectModels.set(position, project);
                 lvProjectOverview.invalidateViews(); //Update the changes
-
-                Toast.makeText(getApplicationContext(), project.getName(), Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -149,6 +112,67 @@ public class ProjectOverviewActivity extends AppCompatActivity {
                 Project.projectList.remove(selected.keyAt(i));
             }
         }
-        projectOverviewAdapterdapter.notifyDataSetChanged();
+        projectOverviewAdapter.notifyDataSetChanged();
+    }
+
+    //Generate the needed info for the app to work
+    private void testData() {
+        //If there is already 1 project don't add more
+        if (Project.projectList.size() == 0) {
+            Project.projectList.add(new Project("Oklahoma City South", "06/27/2018",
+                    "07/13/2018", "", 500, "$500",
+                    250, "$250", "On Schedule"));
+            Project.projectList.add(new Project("Oakland", "05/27/2018",
+                    "12/17/2019", "", 4000, "$4,000",
+                    500, "$500", "On Schedule"));
+            Project.projectList.add(new Project("Dallas, TX", "01/15/2018",
+                    "03/14/2018", "", 5500, "$5,500",
+                    20, "$20", "Behind Schedule"));
+            Project.projectList.add(new Project("New York", "02/12/2019",
+                    "01/23/2018", "", 999, "$999",
+                    999, "$999",
+                    "Current cost has reached its estimated cost."));
+            Project.projectList.add(new Project("Las Vegas", "08/07/2018",
+                    "07/03/2019", "", 500, "$500",
+                    2050, "$2,050",
+                    "Current cost exceeds estimated cost."));
+            Project.projectList.add(new Project("Kansas City", "01/22/2018",
+                    "5/09/2018", "03/15/2018", 30000,
+                    "$30,000", 3000, "$3,000",
+                    "Finished"));
+            Project.projectList.add(new Project("Arkham City", "01/22/2017",
+                    "5/09/2018", "03/15/2018", 3000,
+                    "$3,000", 3000, "$3,000", "Done"));
+
+
+            //Set the id's for the projects
+            for (int x = 0; x < Project.projectList.size(); x++) {
+                Project.projectList.get(x).setID(x);
+            }
+
+            //Create some milestones for the projects
+            Project.projectList.get(1).milestones.add(new Milestone(1,
+                    "Drilling", Project.projectList.get(1).getName(), 55000,
+                    "1/22/2019", "6/12/2019"));
+            Project.projectList.get(1).milestones.add(new Milestone(1,
+                    "Pump Building", Project.projectList.get(1).getName(), 1255000,
+                    "6/02/2019", "12/12/2019"));
+            Project.projectList.get(1).milestones.add(new Milestone(1,
+                    "Fencing", Project.projectList.get(1).getName(), 67330,
+                    "1/12/2020", "2/12/2020"));
+            Project.projectList.get(1).milestones.add(new Milestone(1,
+                    "Station Building", Project.projectList.get(1).getName(),
+                    1255000, "3/16/2020", "7/02/2020"));
+        }
+
+        //Set the current milestone if there are milestones
+        for (int x = 0; x < Project.projectList.size(); x++) {
+            Project p = Project.projectList.get(x);
+
+            //Just set it to the first milestone until it can be calculated
+            if (p.milestones.size() > 0) {
+                p.setCurrentMilestone(p.milestones.get(0).getMilestoneName());
+            }
+        }
     }
 }

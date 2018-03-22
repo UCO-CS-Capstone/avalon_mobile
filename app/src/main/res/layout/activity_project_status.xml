@@ -7,7 +7,7 @@
     tools:context="edu.uco.avalon.ProjectStatusActivity">
 
     <TextView
-        android:id="@+id/textProjectName"
+        android:id="@+id/textMilestoneName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -33,6 +33,6 @@
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textProjectName" />
+        app:layout_constraintTop_toBottomOf="@+id/textMilestoneName" />
 
 </android.support.constraint.ConstraintLayout>

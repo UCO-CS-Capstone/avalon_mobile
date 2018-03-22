@@ -1,32 +1,39 @@
 package edu.uco.avalon;
 
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-
 /**
  * Created by Michael Keller on 2/3/18.
  * Edited by Callie Driver 3/6/2018.
- * Store the basic info needed for a project overview
+ * Edited by Michael Keller 3/16/2018.
+ *      Cleaned up the code. Added milestones to a project.
+ *
  */
 
-
 public class Project implements Serializable {
-    public static ArrayList<Project> projectList = new ArrayList<>();
+    static ArrayList<Project> projectList = new ArrayList<>();
+
+    //Store all of the milestones for a project
+    ArrayList<Milestone> milestones = new ArrayList<>();
 
     private String name;
     private String startDate;
     private String estEndDate;
     private String status;
+    private String currentMilestone = "";
 
     private String actualEndDate;
     private double estCost;
     private double currentCost;
-    private String estCostString, currentCostString; //store the cost as a string so it is less processing later.
+    private String estCostString,
+                   currentCostString; //store the cost as a string so it is less processing later.
     private int id;
 
     public Project(String name, String startDate, String estEndDate, String status){
@@ -36,8 +43,9 @@ public class Project implements Serializable {
         this.status = status;
     }
 
-    public Project(String name, String startDate, String estEndDate, String actualEndDate, double estCost, String estCostString,
-                   double currentCost, String currentCostString){
+    public Project(String name, String startDate, String estEndDate, String actualEndDate,
+                   double estCost, String estCostString, double currentCost,
+                   String currentCostString){
         this.name = name;
         this.startDate = startDate;
         this.estEndDate = estEndDate;
@@ -50,7 +58,8 @@ public class Project implements Serializable {
     }
 
     public Project(String name, String startDate, String estEndDate, String actualEndDate,
-                   double estCost, String estCostString, double currentCost, String currentCostString, String status){
+                   double estCost, String estCostString, double currentCost,
+                   String currentCostString, String status){
         this.name = name;
         this.startDate = startDate;
         this.estEndDate = estEndDate;
@@ -61,7 +70,6 @@ public class Project implements Serializable {
         this.currentCostString = currentCostString;
         this.status = status;
     }
-
 
     public int checkStatus(){
 
@@ -137,7 +145,9 @@ public class Project implements Serializable {
             }
 
         }
-        catch(Exception e){}
+        catch(Exception e){
+            Log.e("Project", e.toString());
+        }
 
         return warning;
     }
@@ -220,5 +230,13 @@ public class Project implements Serializable {
 
     public void setID(int id){
         this.id = id;
+    }
+
+    public String getCurrentMilestone() {
+        return currentMilestone;
+    }
+
+    public void setCurrentMilestone(String currentMilestone) {
+        this.currentMilestone = currentMilestone;
     }
 }
