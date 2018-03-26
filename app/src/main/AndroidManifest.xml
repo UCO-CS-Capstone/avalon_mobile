@@ -23,6 +23,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ProjectOverviewActivity" />
         <activity android:name=".ActivityHome" />
+        <activity android:name=".ActivityUserList" />
         <activity android:name=".ActivityResetPassword" />
         <activity android:name=".AdminListActivity" />
         <activity
