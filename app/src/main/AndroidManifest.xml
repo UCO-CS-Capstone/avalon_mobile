@@ -26,15 +26,18 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ProjectOverviewActivity" />
         <activity android:name=".ActivityHome" />
+        <activity android:name=".ActivityUserList" />
         <activity android:name=".ActivityResetPassword" />
         <activity android:name=".AdminListActivity" />
         <activity
-            android:name=".ActivityCost"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".GraphViewActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".ActivityReport"></activity>
+        <activity android:name=".ActivityReport"/>
+        <activity android:name=".ActivityCost" />
+        <activity android:name=".ProjectDetails" />
+        <activity android:name=".CreateProjectActivity" />
+        <activity android:name=".ProjectStatusActivity" />
+        <activity android:name=".MilestoneDetailsActivity"></activity>
     </application>
 
 </manifest>

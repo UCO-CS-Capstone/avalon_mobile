@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/Fname"
+        android:layout_width="151dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/Fnametv"
+        tools:layout_editor_absoluteY="63dp" />
+
+    <TextView
+        android:id="@+id/Fnametv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Name"
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="66dp" />
+
+    <EditText
+        android:id="@+id/Lname"
+        android:layout_width="153dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/Lnametv"
+        app:layout_constraintTop_toBottomOf="@+id/Fname" />
+
+    <TextView
+        android:id="@+id/Lnametv"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="48dp"
+        android:text="Last Name"
+        app:layout_constraintTop_toBottomOf="@+id/Fnametv"
+        tools:layout_editor_absoluteX="27dp" />
+
+    <EditText
+        android:id="@+id/Email"
+        android:layout_width="155dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/Emailtv"
+        app:layout_constraintTop_toBottomOf="@+id/Lname" />
+
+    <TextView
+        android:id="@+id/Emailtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Email Address"
+        app:layout_constraintTop_toBottomOf="@+id/Lnametv"
+        tools:layout_editor_absoluteX="27dp" />
+
+    <Button
+        android:id="@+id/UserSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Save"
+        app:layout_constraintTop_toBottomOf="@+id/flag"
+        tools:layout_editor_absoluteX="148dp" />
+
+    <TextView
+        android:id="@+id/passtv"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginTop="28dp"
+        android:text="Password"
+        app:layout_constraintTop_toBottomOf="@+id/Emailtv"
+        tools:layout_editor_absoluteX="27dp" />
+
+    <TextView
+        android:id="@+id/flagtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Flag 1-4"
+        app:layout_constraintTop_toBottomOf="@+id/passtv"
+        tools:layout_editor_absoluteX="27dp" />
+
+    <EditText
+        android:id="@+id/pass"
+        android:layout_width="156dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="44dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toEndOf="@+id/passtv"
+        app:layout_constraintTop_toBottomOf="@+id/Email" />
+
+    <EditText
+        android:id="@+id/flag"
+        android:layout_width="156dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="56dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/flagtv"
+        app:layout_constraintTop_toBottomOf="@+id/pass" />
+</android.support.constraint.ConstraintLayout>

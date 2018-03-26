@@ -1,5 +1,7 @@
 package edu.uco.avalon;
 
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +19,7 @@ public class AdminListActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.project_selection, menu);
+        getMenuInflater().inflate(R.menu.admin_selection, menu);
         return true;
     }
 
@@ -32,6 +34,12 @@ public class AdminListActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+
+        if(id== R.id.user_settings) {
+            actionuser();
+
+        }
+
         if (id == R.id.action_logout)
             actionLogout();
 
@@ -42,5 +50,11 @@ public class AdminListActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ActivityMain.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+    }
+
+    public void actionuser() {
+        Intent intent = new Intent(this, ActivityUserList.class);
+        startActivity(intent);
+
     }
 }

@@ -30,6 +30,11 @@ public class ActivityMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Equipment.typeList.add("Type 1");
+        Equipment.typeList.add("Type 2");
+        Equipment.typeList.add("Type 3");
+        Equipment.typeList.add("Type 4");
+
         user = (EditText)findViewById(R.id.edit_username);
         pass = (EditText)findViewById(R.id.edit_password);
 
@@ -142,5 +147,4 @@ public class ActivityMain extends AppCompatActivity {
         Intent intent = new Intent(this, ProjectSelection.class);
         startActivity(intent);
     }
-
 }

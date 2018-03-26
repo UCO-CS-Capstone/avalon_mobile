@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -21,6 +20,7 @@ public class ProjectSelection extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_selection);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -29,9 +29,6 @@ public class ProjectSelection extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Create a new project?", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-
                 //Start the Activity that creates the Activity.
                 Intent intent = new Intent(ProjectSelection.this, CreateProjectActivity.class);
                 startActivity(intent);
@@ -59,7 +56,6 @@ public class ProjectSelection extends AppCompatActivity
         }
     }
 
-    //TODO - Do we need the options menu at all?
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

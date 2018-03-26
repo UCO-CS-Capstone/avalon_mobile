@@ -1,18 +1,18 @@
 package edu.uco.avalon;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.os.Bundle;
 
-public class EquipmentOptionsActivity extends Activity {
+public class ActivityUserList extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment_container);
 
-        Fragment addedFragment = new EquipmentOptionsFragment();
+        Fragment addedFragment = new UserListFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
         transaction.replace(R.id.fragment_container, addedFragment);
