@@ -41,6 +41,9 @@ public class ActivityCost extends AppCompatActivity {
     TextView maintCost;
     EditText mainCostEnter;
 
+    String beginDate;
+    String endDate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,6 +153,7 @@ public class ActivityCost extends AppCompatActivity {
 
     public int findBeginTime(Projects project) {
         String s = this.format.format(project.getProjectDateBegin()).toString();
+        beginDate = s;
         String[] tokens = s.split("/");
         int i = Integer.parseInt(tokens[0]);
         System.out.println("This is the value of token[1]" + tokens[1]);
@@ -209,6 +213,7 @@ public class ActivityCost extends AppCompatActivity {
 
     public int findEndTime(Projects project) {
         String s = this.format.format(project.getProjectDateEnd()).toString();
+        endDate = s;
         String[] tokens = s.split("/");
         int i = Integer.parseInt(tokens[1]);
         return i;
@@ -222,5 +227,16 @@ public class ActivityCost extends AppCompatActivity {
             intent.putExtra("TOTAL", totalCost.getText().toString());
             startActivity(intent);
         }
+    }
+
+    public void startReportActivity(View view) {
+            Intent intent = new Intent(this, ActivityReport.class);
+            intent.putExtra("PROJNAME", projectSpinner.getSelectedItem().toString());
+            intent.putExtra("BEGIN", beginDate);
+            intent.putExtra("END", endDate);
+            intent.putExtra("EQUIP", equipCost.getText().toString());
+            intent.putExtra("MAINT", maintCost.getText().toString());
+            intent.putExtra("TOTAL", totalCost.getText().toString());
+            startActivity(intent);
     }
 }
