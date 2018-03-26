@@ -24,5 +24,12 @@
         android:onClick="startCostAnalysis"
         android:text="Cost Analysis"/>
 
+    <Button
+        android:id="@+id/btnReport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Generate Report"
+        android:onClick="startPDF"/>
+
 
 </android.support.v7.widget.LinearLayoutCompat>

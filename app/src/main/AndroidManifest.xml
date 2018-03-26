@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.uco.avalon">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -29,6 +32,7 @@
         <activity
             android:name=".GraphViewActivity"
             android:screenOrientation="landscape" />
+        <activity android:name=".ActivityReport"/>
         <activity android:name=".ActivityCost" />
         <activity android:name=".ProjectDetails" />
         <activity android:name=".CreateProjectActivity" />
