@@ -20,11 +20,19 @@ public class Equipment {
     private boolean activeProject;
     public ArrayList<Maintenance> maintenanceList ;
 
+    private double dailyCost;
+
     Equipment(String name, String type, boolean activeProject){
         this.name = name;
         this.type = type;
         this.activeProject = activeProject;
         maintenanceList = new ArrayList<>();
+    }
+
+    Equipment(String name, String type, boolean activeProject, double dailyCost){
+        this(name, type, activeProject); //Pass it to the other constructor
+
+        this.dailyCost = dailyCost;
     }
 
     public String getName(){
@@ -56,4 +64,8 @@ public class Equipment {
         }
     }
 
+    //Find the cost for the equipment for the time it is on a job site
+    public double generateCost(int numberOfDays){
+        return dailyCost * numberOfDays;
+    }
 }
