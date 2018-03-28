@@ -42,7 +42,7 @@ public class EquipmentOverviewAdapter extends ArrayAdapter<Equipment> {
         if (convertView == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.project_overview_list_item_view, parent, false);
+            convertView = inflater.inflate(R.layout.equipment_overview_list_item_view, parent, false);
             viewHolder.tvEquipmentName = convertView.findViewById(R.id.textEquipmentName);
             viewHolder.tvEstEndDate = convertView.findViewById(R.id.textEstEndDate);
             viewHolder.tvCurrentCost = convertView.findViewById(R.id.textCurrentCost);

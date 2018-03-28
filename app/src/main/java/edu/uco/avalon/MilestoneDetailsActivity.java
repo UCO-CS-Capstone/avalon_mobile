@@ -25,9 +25,9 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
     private EditText startDate,
                      estEndDate,
                      milestoneName;
-    private ListView milestoneEquipment;
+    private ListView lvMilestoneEquipment;
 
-    private ArrayList<Equipment> equipmentList = new ArrayList<>();
+    private EquipmentOverviewAdapter equipmentOverviewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,21 +62,22 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
 
             projectName.setText(Project.projectList.get(projectID).getName());
         }
-    }
 
-    @Override
-    protected void onStart(){
-        super.onStart();
+        //Equipment list view
+        lvMilestoneEquipment = findViewById(R.id.lvSelectedEquipment);
+        equipmentOverviewAdapter = new EquipmentOverviewAdapter(milestone.milestoneEquipmentList,
+                getApplicationContext());
+        lvMilestoneEquipment.setAdapter(equipmentOverviewAdapter);
+        lvMilestoneEquipment.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
 
         //Equipment spinner
         Spinner equipmentSpinner = findViewById(R.id.spinnerEquipment);
         ArrayAdapter<Equipment> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, Equipment.equipmentList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         equipmentSpinner.setAdapter(adapter);
-
-        milestoneEquipment = findViewById(R.id.lvSelectedEquipment);
-
+        equipmentSpinner.setSelection(0,false);
         equipmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
@@ -85,7 +86,8 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
 
                 //Add the selected equipment to the equipment list
-                equipmentList.add(Equipment.equipmentList.get(pos));
+                milestone.milestoneEquipmentList.add(Equipment.equipmentList.get(pos));
+                lvMilestoneEquipment.invalidateViews(); //Update the changes
             }
 
             @Override
@@ -94,18 +96,28 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        //Don't save the changes
+        milestone.milestoneEquipmentList.clear();
+        super.onBackPressed();
+    }
+
     public void saveChanges(View view){
         milestone.setMilestoneName(milestoneName.getText().toString());
         milestone.setEstEndDate(estEndDate.getText().toString());
         milestone.setStartDate(startDate.getText().toString());
         milestone.setMilestoneName(milestoneName.getText().toString());
-
         milestone.generateCosts();
 
         //If a new milestone add to the array list
         if(milestoneID == -1){
             Project.projectList.get(projectID).milestones.add(milestone);
             milestone.setId(Project.projectList.get(projectID).milestones.size()-1);
+        }
+        else{
+            //Update milestone with new values
+            Project.projectList.get(projectID).milestones.set(milestoneID, milestone);
         }
 
         //Set the first milestone in the array as the current
