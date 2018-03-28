@@ -28,17 +28,17 @@ public class Creator {
         Equipment.typeList.add("Other");
 
         Equipment.equipmentList.add(new Equipment("Loader", "Vehicle",
-                false));
+                false, 275.35));
         Equipment.equipmentList.add(new Equipment("Drilling Rig", "Vehicle",
-                false));
+                false, 2345.67));
         Equipment.equipmentList.add(new Equipment("Bulldozer", "Vehicle",
-                false));
+                false, 1314.57));
         Equipment.equipmentList.add(new Equipment("Drilling Rig", "Vehicle",
-                false));
+                false, 3546.96));
         Equipment.equipmentList.add(new Equipment("Bob the Builder", "Personal",
-                false));
+                false, 1345.21));
         Equipment.equipmentList.add(new Equipment("Generator", "Tool",
-                false));
+                false, 679.06));
 
         Project.projectList.add(new Project("Oklahoma City South", "06/27/2018",
                 "07/13/2018", "", 500, "$500",

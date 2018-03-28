@@ -4,9 +4,15 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MilestoneDetailsActivity extends AppCompatActivity {
     private Milestone milestone;
@@ -19,6 +25,9 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
     private EditText startDate,
                      estEndDate,
                      milestoneName;
+    private ListView milestoneEquipment;
+
+    private ArrayList<Equipment> equipmentList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +62,36 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
 
             projectName.setText(Project.projectList.get(projectID).getName());
         }
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+
+        //Equipment spinner
+        Spinner equipmentSpinner = findViewById(R.id.spinnerEquipment);
+        ArrayAdapter<Equipment> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, Equipment.equipmentList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        equipmentSpinner.setAdapter(adapter);
+
+        milestoneEquipment = findViewById(R.id.lvSelectedEquipment);
+
+        equipmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int pos, long id) {
+                Toast.makeText(getApplicationContext(), Equipment.equipmentList.get(pos).getName(),
+                        Toast.LENGTH_SHORT).show();
+
+                //Add the selected equipment to the equipment list
+                equipmentList.add(Equipment.equipmentList.get(pos));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 
     public void saveChanges(View view){

@@ -13,7 +13,7 @@ public class ProjectStatusActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_status);
 
-        projectNameText = findViewById(R.id.textMilestoneName);
+        projectNameText = findViewById(R.id.textEquipmentName);
         projectStatusText = findViewById(R.id.textProjectStatus);
 
         final int position = getIntent().getIntExtra("Position", -1);

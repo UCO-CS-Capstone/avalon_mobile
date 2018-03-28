@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 /**
  * Created by cdcal on 2/4/2018.
+ *
+ * Michael Keller on 3/27/2018.
+ * Added equipment cost and calculate cost
+ *
  */
 
 public class Equipment {
@@ -20,7 +24,7 @@ public class Equipment {
     private boolean activeProject;
     public ArrayList<Maintenance> maintenanceList ;
 
-    private double dailyCost;
+    private double dailyCost = 0;
 
     Equipment(String name, String type, boolean activeProject){
         this.name = name;
@@ -59,7 +63,6 @@ public class Equipment {
                     maintenanceList.set(i, maintenanceList.get(j));
                     maintenanceList.set(j, t);
                 }
-
             }
         }
     }
@@ -67,5 +70,14 @@ public class Equipment {
     //Find the cost for the equipment for the time it is on a job site
     public double generateCost(int numberOfDays){
         return dailyCost * numberOfDays;
+    }
+
+    //In a spinner it will show the name of the equipment
+    public String toString(){
+        return name;
+    }
+
+    public double getDaileyCost(){
+        return dailyCost;
     }
 }
