@@ -79,7 +79,7 @@ public class ProjectOverviewAdapter extends ArrayAdapter<Project> {
 
         viewHolder.textProjectName.setText(project.getName());
         viewHolder.textEstEndDate.setText(project.getEstEndDate());
-        viewHolder.textCurrentCost.setText(project.getCurrentCostString());
+        viewHolder.textCurrentCost.setText(String.valueOf(project.getCurrentCost()));
         viewHolder.tvCurrentMilestone.setText(project.getCurrentMilestone());
 
 

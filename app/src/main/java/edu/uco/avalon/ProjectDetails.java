@@ -3,6 +3,7 @@ package edu.uco.avalon;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.ActionMode;
 import android.view.Menu;
@@ -11,10 +12,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.*;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class ProjectDetails extends AppCompatActivity {
     private EditText projectName,
@@ -140,6 +149,8 @@ public class ProjectDetails extends AppCompatActivity {
         project.setEstEndDate(endDate.getText().toString());
         project.setStartDate(startDate.getText().toString());
 
+        calculateCost();
+
         setResult(RESULT_OK);
         finish();
     }
@@ -159,5 +170,16 @@ public class ProjectDetails extends AppCompatActivity {
                 lvMilestones.invalidateViews(); //Update the changes
             }
         }
+    }
+
+    private void calculateCost() {
+        ArrayList<Milestone> currentMilestone = project.milestones;
+        double allMilestoneCosts = 0;
+
+        for (Milestone m: currentMilestone) {
+            allMilestoneCosts += m.getCost();
+        }
+
+        project.setCurrentCost(allMilestoneCosts);
     }
 }

@@ -58,11 +58,11 @@ public class Creator {
                 2050, "$2,050",
                 "Current cost exceeds estimated cost."));
         Project.projectList.add(new Project("Kansas City", "01/22/2018",
-                "5/09/2018", "03/15/2018", 30000,
+                "05/09/2018", "03/15/2018", 30000,
                 "$30,000", 3000, "$3,000",
                 "Finished"));
         Project.projectList.add(new Project("Arkham City", "01/22/2017",
-                "5/09/2018", "03/15/2018", 3000,
+                "05/09/2018", "03/15/2018", 3000,
                 "$3,000", 3000, "$3,000", "Done"));
 
 
@@ -74,16 +74,16 @@ public class Creator {
         //Create some milestones for the projects
         Project.projectList.get(1).milestones.add(new Milestone(1,
                 "Drilling", Project.projectList.get(1).getName(), 55000,
-                "1/22/2019", "6/12/2019"));
+                "01/22/2019", "06/12/2019"));
         Project.projectList.get(1).milestones.add(new Milestone(1,
                 "Pump Building", Project.projectList.get(1).getName(), 1255000,
-                "6/02/2019", "12/12/2019"));
+                "06/02/2019", "12/12/2019"));
         Project.projectList.get(1).milestones.add(new Milestone(1,
                 "Fencing", Project.projectList.get(1).getName(), 67330,
-                "1/12/2020", "2/12/2020"));
+                "01/12/2020", "02/12/2020"));
         Project.projectList.get(1).milestones.add(new Milestone(1,
                 "Station Building", Project.projectList.get(1).getName(),
-                1255000, "3/16/2020", "7/02/2020"));
+                1255000, "03/16/2020", "07/02/2020"));
 
         //Set the current milestone if there are milestones
         for (int x = 0; x < Project.projectList.size(); x++) {

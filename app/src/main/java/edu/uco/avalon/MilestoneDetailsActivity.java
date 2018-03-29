@@ -17,20 +17,26 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class MilestoneDetailsActivity extends AppCompatActivity {
     private Milestone milestone;
     private Project project;
     private int milestoneID,
-                projectID;
+            projectID;
 
     private TextView projectName,
-                     estCost;
+            estCost;
     private EditText startDate,
-                     estEndDate,
-                     milestoneName;
+            estEndDate,
+            milestoneName;
     private ListView lvMilestoneEquipment;
 
     private EquipmentOverviewAdapter equipmentOverviewAdapter;
@@ -157,19 +163,22 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    public void saveChanges(View view){
+    public void saveChanges(View view) {
         milestone.setMilestoneName(milestoneName.getText().toString());
         milestone.setEstEndDate(estEndDate.getText().toString());
         milestone.setStartDate(startDate.getText().toString());
         milestone.setMilestoneName(milestoneName.getText().toString());
-        milestone.generateCosts();
+
+        //Update the cost per day
+        calculateCost();
+
+        Toast.makeText(getApplicationContext(), "After: " + milestone.getCost(), Toast.LENGTH_SHORT).show();
 
         //If a new milestone add to the array list
-        if(milestoneID == -1){
+        if (milestoneID == -1) {
             Project.projectList.get(projectID).milestones.add(milestone);
-            milestone.setId(Project.projectList.get(projectID).milestones.size()-1);
-        }
-        else{
+            milestone.setId(Project.projectList.get(projectID).milestones.size() - 1);
+        } else {
             //Update milestone with new values
             Project.projectList.get(projectID).milestones.set(milestoneID, milestone);
             milestone.milestoneEquipmentList = new ArrayList<>(tempEquipment);
@@ -183,17 +192,40 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
     }
 
     private void deleteData() {
-
         SparseBooleanArray selected = lvMilestoneEquipment.getCheckedItemPositions();
         for (int i = selected.size() - 1; i >= 0; i--) {
             if (selected.valueAt(i)) {
                 try {
                     tempEquipment.remove(selected.keyAt(i));
-                } catch (Exception e){
+                } catch (Exception e) {
                     Log.e("MileStoneDetails", e.toString());
                 }
             }
         }
         equipmentOverviewAdapter.notifyDataSetChanged();
+    }
+
+    private void calculateCost() {
+        ArrayList<Equipment> currentEquipment = tempEquipment;
+        DateFormat shortDf = DateFormat.getDateInstance(DateFormat.SHORT);
+        long days = 0;
+
+        try {
+            Date start = shortDf.parse(milestone.getStartDate());
+            Date end = shortDf.parse(milestone.getEstEndDate());
+
+            long diff = end.getTime() - start.getTime();
+            days = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+
+        } catch (ParseException exception) {
+            Log.e("ProjectDetails", "calculateCost " + exception);
+        }
+
+        double allEquipmentCosts = 0;
+        for (Equipment e: currentEquipment) {
+            allEquipmentCosts += (days * e.getDaileyCost());
+        }
+
+        milestone.setCost(allEquipmentCosts);
     }
 }

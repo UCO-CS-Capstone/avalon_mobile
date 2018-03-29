@@ -22,8 +22,6 @@ public class ProjectOverviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.project_overview);
 
-//        testData();
-
         //For project overview
         lvProjectOverview = findViewById(R.id.projectOverviewList);
         projectOverviewAdapter = new ProjectOverviewAdapter(
