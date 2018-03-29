@@ -33,7 +33,7 @@ public class Creator {
                 false, 2345.67));
         Equipment.equipmentList.add(new Equipment("Bulldozer", "Vehicle",
                 false, 1314.57));
-        Equipment.equipmentList.add(new Equipment("Drilling Rig", "Vehicle",
+        Equipment.equipmentList.add(new Equipment("Water Truck", "Vehicle",
                 false, 3546.96));
         Equipment.equipmentList.add(new Equipment("Bob the Builder", "Personal",
                 false, 1345.21));
