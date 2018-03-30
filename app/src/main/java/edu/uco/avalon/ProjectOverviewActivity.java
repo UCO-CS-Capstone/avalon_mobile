@@ -22,8 +22,6 @@ public class ProjectOverviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.project_overview);
 
-//        testData();
-
         //For project overview
         lvProjectOverview = findViewById(R.id.projectOverviewList);
         projectOverviewAdapter = new ProjectOverviewAdapter(
@@ -109,66 +107,5 @@ public class ProjectOverviewActivity extends AppCompatActivity {
             }
         }
         projectOverviewAdapter.notifyDataSetChanged();
-    }
-
-    //Generate the needed info for the app to work
-    private void testData() {
-        //If there is already 1 project don't add more
-//        if (Project.projectList.size() == 0) {
-//            Project.projectList.add(new Project("Oklahoma City South", "06/27/2018",
-//                    "07/13/2018", "", 500, "$500",
-//                    250, "$250", "On Schedule"));
-//            Project.projectList.add(new Project("Oakland", "05/27/2018",
-//                    "12/17/2019", "", 4000, "$4,000",
-//                    500, "$500", "On Schedule"));
-//            Project.projectList.add(new Project("Dallas, TX", "01/15/2018",
-//                    "03/14/2018", "", 5500, "$5,500",
-//                    20, "$20", "Behind Schedule"));
-//            Project.projectList.add(new Project("New York", "02/12/2019",
-//                    "01/23/2018", "", 999, "$999",
-//                    999, "$999",
-//                    "Current cost has reached its estimated cost."));
-//            Project.projectList.add(new Project("Las Vegas", "08/07/2018",
-//                    "07/03/2019", "", 500, "$500",
-//                    2050, "$2,050",
-//                    "Current cost exceeds estimated cost."));
-//            Project.projectList.add(new Project("Kansas City", "01/22/2018",
-//                    "5/09/2018", "03/15/2018", 30000,
-//                    "$30,000", 3000, "$3,000",
-//                    "Finished"));
-//            Project.projectList.add(new Project("Arkham City", "01/22/2017",
-//                    "5/09/2018", "03/15/2018", 3000,
-//                    "$3,000", 3000, "$3,000", "Done"));
-//
-//
-//            //Set the id's for the projects
-//            for (int x = 0; x < Project.projectList.size(); x++) {
-//                Project.projectList.get(x).setID(x);
-//            }
-//
-//            //Create some milestones for the projects
-//            Project.projectList.get(1).milestones.add(new Milestone(1,
-//                    "Drilling", Project.projectList.get(1).getName(), 55000,
-//                    "1/22/2019", "6/12/2019"));
-//            Project.projectList.get(1).milestones.add(new Milestone(1,
-//                    "Pump Building", Project.projectList.get(1).getName(), 1255000,
-//                    "6/02/2019", "12/12/2019"));
-//            Project.projectList.get(1).milestones.add(new Milestone(1,
-//                    "Fencing", Project.projectList.get(1).getName(), 67330,
-//                    "1/12/2020", "2/12/2020"));
-//            Project.projectList.get(1).milestones.add(new Milestone(1,
-//                    "Station Building", Project.projectList.get(1).getName(),
-//                    1255000, "3/16/2020", "7/02/2020"));
-//        }
-//
-//        //Set the current milestone if there are milestones
-//        for (int x = 0; x < Project.projectList.size(); x++) {
-//            Project p = Project.projectList.get(x);
-//
-//            //Just set it to the first milestone until it can be calculated
-//            if (p.milestones.size() > 0) {
-//                p.setCurrentMilestone(p.milestones.get(0).getMilestoneName());
-//            }
-//        }
     }
 }

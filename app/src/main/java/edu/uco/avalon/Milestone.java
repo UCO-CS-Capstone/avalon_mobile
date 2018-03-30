@@ -1,6 +1,7 @@
 package edu.uco.avalon;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -17,6 +18,7 @@ public class Milestone implements Serializable {
     private double cost;
     private String startDate;
     private String estEndDate;
+    ArrayList<Equipment> milestoneEquipmentList = new ArrayList<>();
 
     public Milestone(){}
 

@@ -17,23 +17,15 @@ import java.util.ArrayList;
  */
 
 public class MilestoneOverviewAdapter extends ArrayAdapter<Milestone> {
-    private ArrayList<Milestone> dataSet;
-    private Context mContext;
-
     // View lookup cache
     private static class ViewHolder {
         TextView textMilestoneName;
         TextView textEstEndDate;
         TextView textCurrentCost;
-
-        Button buttonStatus;
     }
 
     MilestoneOverviewAdapter(ArrayList<Milestone> data, Context context) {
         super(context, R.layout.milestone_overview_list_item_view, data);
-        this.dataSet = data;
-        this.mContext = context;
-
     }
 
     @Override
@@ -49,7 +41,7 @@ public class MilestoneOverviewAdapter extends ArrayAdapter<Milestone> {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.milestone_overview_list_item_view, parent,
                     false);
-            viewHolder.textMilestoneName = convertView.findViewById(R.id.textMilestoneName);
+            viewHolder.textMilestoneName = convertView.findViewById(R.id.textEquipmentName);
             viewHolder.textEstEndDate = convertView.findViewById(R.id.textEstEndDate);
             viewHolder.textCurrentCost = convertView.findViewById(R.id.textCurrentCost);
 

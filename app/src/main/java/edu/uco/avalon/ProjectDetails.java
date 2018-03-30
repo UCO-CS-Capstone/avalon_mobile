@@ -13,6 +13,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import java.util.ArrayList;
 
 public class ProjectDetails extends AppCompatActivity {
     private EditText projectName,
@@ -138,6 +139,8 @@ public class ProjectDetails extends AppCompatActivity {
         project.setEstEndDate(endDate.getText().toString());
         project.setStartDate(startDate.getText().toString());
 
+        calculateCost();
+
         setResult(RESULT_OK);
         finish();
     }
@@ -157,5 +160,16 @@ public class ProjectDetails extends AppCompatActivity {
                 lvMilestones.invalidateViews(); //Update the changes
             }
         }
+    }
+
+    private void calculateCost() {
+        ArrayList<Milestone> currentMilestone = project.milestones;
+        double allMilestoneCosts = 0;
+
+        for (Milestone m: currentMilestone) {
+            allMilestoneCosts += m.getCost();
+        }
+
+        project.setCurrentCost(allMilestoneCosts);
     }
 }
