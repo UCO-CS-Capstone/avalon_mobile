@@ -6,11 +6,14 @@ import java.util.Random;
 
 /**
  * Created by Michael Keller on 3/16/18.
+ * Edited by Callie Driver on 4/5/18.
  *
  * Small manageable part of a project
  */
 
 public class Milestone implements Serializable {
+    public static int currentID; //added by Callie for remembering which ID is being used.
+
     private int projectID;
     private int id;
     private String milestoneName;
