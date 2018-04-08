@@ -106,6 +106,8 @@ public class ProjectOverviewAdapter extends ArrayAdapter<Project> {
             viewHolder.buttonStatus.setBackgroundColor(Color.GREEN);
         }
 
+//convertView.setBackgroundColor(Color.GREEN);
+
         // Return the completed view to render on screen
         return convertView;
     }

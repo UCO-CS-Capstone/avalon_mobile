@@ -43,6 +43,9 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
     //Store the selected equipment until saved
     private ArrayList<Equipment> tempEquipment = new ArrayList<>();
 
+    //To keep track of which equipment was added to a project for activeCount.
+    private ArrayList<Integer> equipmentCount = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,20 +72,31 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
                 startDate.setText(milestone.getStartDate());
                 estEndDate.setText(milestone.getEstEndDate());
                 milestoneName.setText(milestone.getMilestoneName());
+
             } else {
                 milestone = new Milestone();
+
             }
 
             projectName.setText(Project.projectList.get(projectID).getName());
 
             //Copy equipment into the temp list
             tempEquipment = new ArrayList<>(milestone.milestoneEquipmentList);
+
+
+            //Check if equipment is used in other projects
         }
 
         //Equipment list view
         lvMilestoneEquipment = findViewById(R.id.lvSelectedEquipment);
-        equipmentOverviewAdapter = new EquipmentOverviewAdapter(tempEquipment,
-                getApplicationContext());
+        if(milestoneID != -1){
+            equipmentOverviewAdapter = new EquipmentOverviewAdapter(tempEquipment,
+                    getApplicationContext(), milestoneID, projectID);
+        }
+        else{
+            equipmentOverviewAdapter = new EquipmentOverviewAdapter(tempEquipment,
+                    getApplicationContext(), milestoneID, projectID, true);
+        }
         lvMilestoneEquipment.setAdapter(equipmentOverviewAdapter);
         lvMilestoneEquipment.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
         lvMilestoneEquipment.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
@@ -146,6 +160,9 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
 
                 //Add the selected equipment to the temporary equipment list
                 tempEquipment.add(Equipment.equipmentList.get(pos));
+                Equipment.equipmentList.get(pos).increaseActiveCount(); //Flags that the equipment is added to a project.
+                equipmentCount.add(pos);
+                equipmentOverviewAdapter.setStrings(startDate.getText().toString(), estEndDate.getText().toString());
                 lvMilestoneEquipment.invalidateViews(); //Update the changes
             }
 
@@ -159,6 +176,10 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
     public void onBackPressed() {
         //Don't save the changes
         tempEquipment.clear();
+        for(int i = 0; i < equipmentCount.size(); i++){ //subtract count of equipment for a project since it's cancelled.
+            Equipment.equipmentList.get(equipmentCount.get(i)).decreaseActiveCount();
+        }
+        equipmentCount.clear();
         super.onBackPressed();
     }
 
@@ -180,8 +201,9 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
         } else {
             //Update milestone with new values
             Project.projectList.get(projectID).milestones.set(milestoneID, milestone);
-            milestone.milestoneEquipmentList = new ArrayList<>(tempEquipment);
         }
+
+        milestone.milestoneEquipmentList = new ArrayList<>(tempEquipment);
 
         //Set the first milestone in the array as the current
         project.setCurrentMilestone(project.milestones.get(0).getMilestoneName());
@@ -195,6 +217,7 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
         for (int i = selected.size() - 1; i >= 0; i--) {
             if (selected.valueAt(i)) {
                 try {
+                    tempEquipment.get(selected.keyAt(i)).decreaseActiveCount(); //to keep track of how many projects this equipment is on.
                     tempEquipment.remove(selected.keyAt(i));
                 } catch (Exception e) {
                     Log.e("MileStoneDetails", e.toString());

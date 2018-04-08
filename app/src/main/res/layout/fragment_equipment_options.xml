@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <!--<Button
-        android:id="@+id/buttonContacts"
+        andrcurrentIDd:idcurrentID@+id/buttonContacts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Create Equipment" />

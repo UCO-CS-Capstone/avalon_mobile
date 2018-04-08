@@ -54,6 +54,8 @@ public class MilestoneOverviewAdapter extends ArrayAdapter<Milestone> {
         viewHolder.textEstEndDate.setText(milestone.getEstEndDate());
         viewHolder.textCurrentCost.setText(String.valueOf(milestone.getCost()));
 
+
+
         return convertView;
     }
 }

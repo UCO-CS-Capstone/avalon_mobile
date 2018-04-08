@@ -17,11 +17,12 @@ public class Equipment {
     //These two weren't in the individual report ^
 
     public static Equipment editOption;
-    public static int id;
+    public static int id; //for EditEquipmentFragment
 
     private String name;
     private String type;
     private boolean activeProject;
+    private int activeCount;
     public ArrayList<Maintenance> maintenanceList ;
 
     private double dailyCost = 0;
@@ -30,6 +31,7 @@ public class Equipment {
         this.name = name;
         this.type = type;
         this.activeProject = activeProject;
+        this.activeCount = 0;
         maintenanceList = new ArrayList<>();
     }
 
@@ -79,5 +81,26 @@ public class Equipment {
 
     public double getDaileyCost(){
         return dailyCost;
+    }
+
+    public int getActiveCount(){
+        return activeCount;
+    }
+
+    public void increaseActiveCount(){
+        activeCount++;
+        activeProject = true;
+    }
+
+    public void decreaseActiveCount(){
+        if(activeCount > 0) {
+            activeCount--;
+
+            if(activeCount == 0){
+                activeProject = false;
+            }
+        }
+        else
+            activeProject = false;
     }
 }

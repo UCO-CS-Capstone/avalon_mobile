@@ -64,7 +64,7 @@ public class AddUserFragment extends Fragment {
             });
 
         if(this instanceof EditUserFragment){ //if in edit-mode, add the delete button stuff.
-           // delette = view.findViewById(R.id.deletteMaintenanceButton);
+           // delette = view.findViewById(R.tempID.deletteMaintenanceButton);
             //delette.setVisibility(View.VISIBLE);
             /*delette.setOnClickListener(new View.OnClickListener() {
                 @Override

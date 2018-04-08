@@ -28,7 +28,7 @@ public class EquipmentOptionsActivity extends Activity {
 //    Fragment addedFragment = new CreateEquipmentFragment();
 //    FragmentTransaction transaction = getFragmentManager().beginTransaction();
 //
-//        transaction.replace(R.id.fragment_container, addedFragment);
+//        transaction.replace(R.tempID.fragment_container, addedFragment);
 //                transaction.addToBackStack(null);
 //
 //                transaction.commit();
