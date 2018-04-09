@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Generate Report"
-        android:onClick="startPDF"/>
+        android:onClick="startReportActivity"/>
 
 
 </android.support.v7.widget.LinearLayoutCompat>
