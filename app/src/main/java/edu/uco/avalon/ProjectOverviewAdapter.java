@@ -71,6 +71,7 @@ public class ProjectOverviewAdapter extends ArrayAdapter<Project> {
                 //if the status button is pressed, go to the next activity to show the issues. (the status string)
                 Intent intent = new Intent(mContext, ProjectStatusActivity.class);
                 intent.putExtra("Position", pos);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                 mContext.startActivity(intent);
 
