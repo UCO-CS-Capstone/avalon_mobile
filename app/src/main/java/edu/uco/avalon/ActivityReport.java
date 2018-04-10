@@ -360,7 +360,6 @@ public class ActivityReport extends AppCompatActivity implements ActivityCompat.
                 updateView(CurrentView.OPTIONS_LAYOUT);
             }
         }
-
     }
 
 
