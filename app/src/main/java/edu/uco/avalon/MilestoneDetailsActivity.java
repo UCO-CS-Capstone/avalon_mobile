@@ -17,7 +17,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -192,8 +191,6 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
         //Update the cost per day
         calculateCost();
 
-        Toast.makeText(getApplicationContext(), "After: " + milestone.getCost(), Toast.LENGTH_SHORT).show();
-
         //If a new milestone add to the array list
         if (milestoneID == -1) {
             Project.projectList.get(projectID).milestones.add(milestone);
@@ -217,7 +214,8 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
         for (int i = selected.size() - 1; i >= 0; i--) {
             if (selected.valueAt(i)) {
                 try {
-                    tempEquipment.get(selected.keyAt(i)).decreaseActiveCount(); //to keep track of how many projects this equipment is on.
+                    //to keep track of how many projects this equipment is on.
+                    tempEquipment.get(selected.keyAt(i)).decreaseActiveCount();
                     tempEquipment.remove(selected.keyAt(i));
                 } catch (Exception e) {
                     Log.e("MileStoneDetails", e.toString());
