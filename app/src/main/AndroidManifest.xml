@@ -32,12 +32,14 @@
         <activity
             android:name=".GraphViewActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".ActivityReport"/>
+        <activity android:name=".ActivityReport" />
         <activity android:name=".ActivityCost" />
         <activity android:name=".ProjectDetails" />
         <activity android:name=".CreateProjectActivity" />
         <activity android:name=".ProjectStatusActivity" />
-        <activity android:name=".MilestoneDetailsActivity"></activity>
+        <activity android:name=".MilestoneDetailsActivity" />
+        <activity android:name=".ProjectReportActivity" />
+        <activity android:name=".ProjectReport" />
     </application>
 
 </manifest>

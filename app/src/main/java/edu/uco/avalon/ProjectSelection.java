@@ -116,6 +116,11 @@ public class ProjectSelection extends AppCompatActivity
 
     }
 
+    public void startReportActivity(View view) {
+        Intent intent = new Intent(this, ProjectReportActivity.class);
+        startActivity(intent);
+    }
+
     public void actionLogout() {
         Intent intent = new Intent(this, ActivityMain.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
