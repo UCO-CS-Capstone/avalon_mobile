@@ -96,6 +96,7 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
             equipmentOverviewAdapter = new EquipmentOverviewAdapter(tempEquipment,
                     getApplicationContext(), milestoneID, projectID, true);
         }
+
         lvMilestoneEquipment.setAdapter(equipmentOverviewAdapter);
         lvMilestoneEquipment.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
         lvMilestoneEquipment.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
@@ -156,6 +157,10 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int pos, long id) {
+
+                //Do not select the blank item in the list
+                if(id == 0)
+                    return;
 
                 //Add the selected equipment to the temporary equipment list
                 tempEquipment.add(Equipment.equipmentList.get(pos));
@@ -235,7 +240,7 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
             Date end = shortDf.parse(milestone.getEstEndDate());
 
             long diff = end.getTime() - start.getTime();
-            
+
             //Add one to count for the first day used
             days = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1;
 

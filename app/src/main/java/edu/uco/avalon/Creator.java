@@ -27,6 +27,9 @@ public class Creator {
         Equipment.typeList.add("Personal");
         Equipment.typeList.add("Other");
 
+        //Need a blank item for the list view of the equipment
+        Equipment.equipmentList.add(new Equipment(" ", " ",
+                false, 0));
         Equipment.equipmentList.add(new Equipment("Loader", "Vehicle",
                 false, 275.35));
         Equipment.equipmentList.add(new Equipment("Drilling Rig", "Vehicle",
