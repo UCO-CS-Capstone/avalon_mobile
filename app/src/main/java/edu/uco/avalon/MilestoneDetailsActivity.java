@@ -235,7 +235,9 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
             Date end = shortDf.parse(milestone.getEstEndDate());
 
             long diff = end.getTime() - start.getTime();
-            days = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+            
+            //Add one to count for the first day used
+            days = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1;
 
         } catch (ParseException exception) {
             Log.e("ProjectDetails", "calculateCost " + exception);
