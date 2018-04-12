@@ -176,22 +176,6 @@ public class Project implements Serializable {
         this.estEndDate = estEndDate;
     }
 
-    public String getActualEndDate() {
-        return actualEndDate;
-    }
-
-    public void setActualEndDate(String ActualEndDate) {
-        this.actualEndDate = actualEndDate;
-    }
-
-    public double getEstCost() {
-        return estCost;
-    }
-
-    public void setEstCost(double estCost) {
-        this.estCost = estCost;
-    }
-
     public double getCurrentCost() {
         return currentCost;
     }
@@ -200,32 +184,8 @@ public class Project implements Serializable {
         this.currentCost = currentCost;
     }
 
-    public String getEstCostString() {
-        return estCostString;
-    }
-
-    public void setEstCostString(String estCostString) {
-        this.estCostString = estCostString;
-    }
-
-    public String getCurrentCostString() {
-        return currentCostString;
-    }
-
-    public void setCurrentCostString(String currentCostString) {
-        this.currentCostString = currentCostString;
-    }
-
     public String getStatus() {
         return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public int getID(){
-        return id;
     }
 
     public void setID(int id){

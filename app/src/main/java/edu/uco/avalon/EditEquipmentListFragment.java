@@ -59,7 +59,7 @@ public class EditEquipmentListFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 //pass the id to the api and send the equipment info it gives.
-                Equipment.editOption = Equipment.equipmentList.get(i); //should get from DB
+                Equipment.editOption = Equipment.equipmentList.get(i);
                 Equipment.id = i;
                 Maintenance.selected = i;
 
@@ -138,9 +138,6 @@ public class EditEquipmentListFragment extends Fragment {
             }
         }
 
-        //if deletion was successful
-        //Toast.makeText(getContext(), "Equipment Deleted Successfully.", Toast.LENGTH_SHORT).show();
-
         //get the equipment list from the database. Used to refresh the listview
         String[] from = new String[] {"Name", "Type"};
         int[] to = new int[] { R.id.large_Name, R.id.small_Type};
@@ -154,13 +151,7 @@ public class EditEquipmentListFragment extends Fragment {
         }
         adapter = new SimpleAdapter(this.getActivity(), fillMaps, R.layout.equipment_list_item, from, to);
         equipmentListView.setAdapter(adapter);
-       // adapter.notifyDataSetChanged(); //doesn't work with SimpleAdapter
         emptyText.setVisibility((adapter.isEmpty())?View.VISIBLE:View.GONE);
-
-
-
-        //if deletion was unsuccessful
-        //Toast.makeText(getContext(), "Equipment could not be deleted....", Toast.LENGTH_SHORT);
     }
 
 

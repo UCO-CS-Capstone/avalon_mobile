@@ -18,10 +18,6 @@ import java.util.Locale;
  * Created by cdcal on 3/5/2018.
  */
 
-/**
- * Some note <br/>
- * <li>Always use locale US instead of default to make DecimalFormat work well in all languages</li>
- */
 public class CurrencyEditText extends android.support.v7.widget.AppCompatEditText {
     private static String prefix = "";
     private static String hint = "$";
@@ -55,11 +51,6 @@ public class CurrencyEditText extends android.support.v7.widget.AppCompatEditTex
         handleCaseCurrencyEmpty(focused);
     }
 
-    /**
-     * When currency empty <br/>
-     * + When focus EditText, set the default text = prefix (ex: VND) <br/>
-     * + When EditText lose focus, set the default text = "", EditText will display hint (ex:VND)
-     */
     private void handleCaseCurrencyEmpty(boolean focused) {
         if (focused) {
             if (getText().toString().isEmpty()) {
@@ -85,12 +76,12 @@ public class CurrencyEditText extends android.support.v7.widget.AppCompatEditTex
 
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            // do nothing
+
         }
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            //do nothing
+
         }
 
         @Override
@@ -150,10 +141,6 @@ public class CurrencyEditText extends android.support.v7.widget.AppCompatEditTex
             return formatter.format(parsed);
         }
 
-        /**
-         * It will return suitable pattern for format decimal
-         * For example: 10.2 -> return 0 | 10.23 -> return 00, | 10.235 -> return 000
-         */
         private String getDecimalPattern(String str) {
             int decimalCount = str.length() - str.indexOf(".") - 1;
             StringBuilder decimalPattern = new StringBuilder();

@@ -114,15 +114,11 @@ public class CreateProjectActivity extends AppCompatActivity{
 
                     Project.projectList.add(newProject);
 
-                    //Set the index of the project in the array as the tempID until database is made
                     newProject.setID(Project.projectList.size()-1);
 
                     //if saving was successful
                     Toast.makeText(CreateProjectActivity.this, "Saved Successfully.", Toast.LENGTH_SHORT).show();
                     finish();
-
-                    //if saving was unsuccessful, don't go back to previous screen.
-                    //Toast.makeText(getContext(), "Saved Successfully.", Toast.LENGTH_SHORT);
                 }
                 else{
                     Toast.makeText(CreateProjectActivity.this, "Please enter a name for the Project.", Toast.LENGTH_SHORT).show();
