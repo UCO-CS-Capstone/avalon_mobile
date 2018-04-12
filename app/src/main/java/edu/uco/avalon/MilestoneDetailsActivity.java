@@ -82,8 +82,6 @@ public class MilestoneDetailsActivity extends AppCompatActivity {
             //Copy equipment into the temp list
             tempEquipment = new ArrayList<>(milestone.milestoneEquipmentList);
 
-
-            //Check if equipment is used in other projects
         }
 
         //Equipment list view

@@ -12,9 +12,8 @@ import java.util.ArrayList;
 
 public class Equipment {
 
-    public static ArrayList<String> typeList = new ArrayList<>(); //should be accessed from db
-    public static ArrayList<Equipment> equipmentList = new ArrayList<>(); //should be accessed from db
-    //These two weren't in the individual report ^
+    public static ArrayList<String> typeList = new ArrayList<>();
+    public static ArrayList<Equipment> equipmentList = new ArrayList<>();
 
     public static Equipment editOption;
     public static int id; //for EditEquipmentFragment
@@ -48,8 +47,6 @@ public class Equipment {
     public String getType(){
         return type;
     }
-
-    public boolean getActiveProject(){ return activeProject; }
 
     public void AddMaintenance (Maintenance m){
             maintenanceList.add(m);

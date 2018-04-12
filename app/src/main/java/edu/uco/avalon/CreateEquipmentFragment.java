@@ -25,27 +25,10 @@ public class CreateEquipmentFragment extends Fragment {
     String name;
     String type;
 
-    //Dummy values to be replaced by accessing the Database
-    //String typeList[] = {"Type 1", "Type 2", "Type 3", "Type 4"}; //should be accessed from db
-    //static boolean created = false;
-
-
     public CreateEquipmentFragment() {
-        // Required empty public constructor
-
-
         //if creating new equipment, just get the types and nothing else.
         name = "";
         type = "";
-//        if(created == false) {
-//            Equipment.typeList.add("Type 1");
-//            Equipment.typeList.add("Type 2");
-//            Equipment.typeList.add("Type 3");
-//            Equipment.typeList.add("Type 4");
-//            created = true;
-//        }
-
-        //if editing equipment, get that data and store into all the edit texts and such
     }
 
 
@@ -138,12 +121,7 @@ public class CreateEquipmentFragment extends Fragment {
 
         Equipment.equipmentList.add(new Equipment(name, type, false)); //db
 
-        //if saving was successful
         Toast.makeText(getContext(), "Saved Successfully.", Toast.LENGTH_SHORT).show();
-
-
-        //if saving was unsuccessful, don't go back to previous screen.
-        //Toast.makeText(getContext(), "Saved Unsuccessfully....", Toast.LENGTH_SHORT);
 
         //go back to previous screen
         getFragmentManager().popBackStack();

@@ -27,7 +27,6 @@ public class ManageTypesFragment extends Fragment {
 
 
     public ManageTypesFragment() {
-        // Required empty public constructor
         type = "";
     }
 
@@ -102,14 +101,9 @@ public class ManageTypesFragment extends Fragment {
         else{
             Equipment.typeList.add(typeName); //db
 
-            //if saving was successful
             Toast.makeText(getContext(), "Saved Successfully.", Toast.LENGTH_SHORT).show();
             typeSpinner.setSelection(adapter.getPosition(typeName));
             typeEdit.setText("");
-
-
-            //if saving was unsuccessful, don't go back to previous screen.
-            //Toast.makeText(getContext(), "Saved Unsuccessfully....", Toast.LENGTH_SHORT);
 
         }
 
@@ -120,13 +114,8 @@ public class ManageTypesFragment extends Fragment {
         if(Equipment.typeList.size() > 1) {
             Equipment.typeList.remove(typePos); //db
 
-
-            //if saving was successful
             Toast.makeText(getContext(), "Deleted Successfully.", Toast.LENGTH_SHORT).show();
             adapter.notifyDataSetChanged();
-
-            //if saving was unsuccessful, don't go back to previous screen.
-            //Toast.makeText(getContext(), "Saved Unsuccessfully....", Toast.LENGTH_SHORT);
         }
         else{
             Toast.makeText(getContext(), "Cannot delete the single remaining type in the list.", Toast.LENGTH_SHORT).show();

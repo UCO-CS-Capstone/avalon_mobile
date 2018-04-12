@@ -83,8 +83,6 @@ public class ProjectOverviewAdapter extends ArrayAdapter<Project> {
         viewHolder.textCurrentCost.setText(String.valueOf(project.getCurrentCost()));
         viewHolder.tvCurrentMilestone.setText(project.getCurrentMilestone());
 
-
-        //if project.checkStatus() == true, change button color to yellow,
         // 0          = no errors                         = BLUE
         // 1          = warning                           = ORANGE
         // 2          = important warning                 = RED
@@ -106,8 +104,6 @@ public class ProjectOverviewAdapter extends ArrayAdapter<Project> {
         else if (warningLevel == 4){
             viewHolder.buttonStatus.setBackgroundColor(Color.GREEN);
         }
-
-//convertView.setBackgroundColor(Color.GREEN);
 
         // Return the completed view to render on screen
         return convertView;
